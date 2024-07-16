@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctbick08lhn73"]
+
+[ext_resource type="Script" path="res://Scripts/gui.gd" id="1_g0imb"]
+
+[node name="Main" type="Node2D"]
+metadata/_edit_vertical_guides_ = [400.0]
+metadata/_edit_horizontal_guides_ = [225.0]
+
+[node name="GUI" type="CanvasLayer" parent="."]
+script = ExtResource("1_g0imb")
+
+[node name="TimerContainer" type="PanelContainer" parent="GUI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -67.0
+offset_right = 67.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="TimerLabel" type="Label" parent="GUI/TimerContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "	"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+process_callback = 0
+autostart = true
