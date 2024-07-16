@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctbick08lhn73"]
+[gd_scene load_steps=5 format=3 uid="uid://ctbick08lhn73"]
 
 [ext_resource type="Script" path="res://Scripts/gui.gd" id="1_g0imb"]
+[ext_resource type="PackedScene" uid="uid://c0tlil63xy6bk" path="res://Scenes/player.tscn" id="2_m103x"]
+[ext_resource type="Script" path="res://Scripts/rail.gd" id="3_1pt2a"]
+
+[sub_resource type="Curve2D" id="Curve2D_reel6"]
+bake_interval = 64.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 100, 50, 0, 0, 0, 0, 210, 18, 0, 0, 0, 0, 102, -98, 0, 0, 0, 0, 0, 0)
+}
+point_count = 4
 
 [node name="Main" type="Node2D"]
 metadata/_edit_vertical_guides_ = [400.0]
@@ -9,16 +18,16 @@ metadata/_edit_horizontal_guides_ = [225.0]
 [node name="GUI" type="CanvasLayer" parent="."]
 script = ExtResource("1_g0imb")
 
-[node name="TimerContainer" type="PanelContainer" parent="GUI"]
+[node name="PanelContainer" type="PanelContainer" parent="GUI"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -67.0
-offset_right = 67.0
+offset_left = -66.5
+offset_right = 66.5
 offset_bottom = 40.0
 grow_horizontal = 2
 
-[node name="TimerLabel" type="Label" parent="GUI/TimerContainer"]
+[node name="TimerLabel" type="Label" parent="GUI/PanelContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "	"
@@ -27,4 +36,16 @@ horizontal_alignment = 1
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
 process_callback = 0
+wait_time = 150.0
 autostart = true
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(300, 181)
+curve = SubResource("Curve2D_reel6")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(100, 50)
+rotation = -0.283096
+script = ExtResource("3_1pt2a")
+
+[node name="Player" parent="Path2D/PathFollow2D" instance=ExtResource("2_m103x")]

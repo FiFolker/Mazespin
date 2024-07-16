@@ -30,3 +30,7 @@ folder_colors={
 "res://Scenes/": "green",
 "res://Scripts/": "blue"
 }
+
+[gui]
+
+theme/custom="res://Resources/a_few_minutes_late_theme.tres"
