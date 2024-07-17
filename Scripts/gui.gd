@@ -21,4 +21,6 @@ func convert_sec_in_min(sec:float)->Array[int]:
 	return time_converted
 
 func array_to_min_and_sec_string(min_and_sec:Array[int])-> String:
-	return str(min_and_sec[0]) + " : " + str(min_and_sec[1])
+	if min_and_sec[0] <= 0:
+		return str(min_and_sec[1]) + "s"
+	return str(min_and_sec[0]) + "m " + str(min_and_sec[1]) + "s"

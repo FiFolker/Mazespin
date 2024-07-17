@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://xr0cftkymv3u"]
+
+[ext_resource type="Script" path="res://Scripts/qte.gd" id="1_fv0a8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qvft"]
+size = Vector2(232, 42)
+
+[node name="QTEArea" type="Area2D"]
+script = ExtResource("1_fv0a8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6qvft")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
