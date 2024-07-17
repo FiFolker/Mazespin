@@ -1,20 +1,22 @@
 extends PathFollow2D
 
 @export var speed:float = 100
-@export var slow_down_scale : float = 5.0
+@onready var slow_down_scale : float = calculate_braking_force(speed) :
+	set(value):
+		slow_down_scale = calculate_braking_force(speed)
 
 var has_to_slow_down: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	print(calculate_braking_force(speed))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta:float):
 	self.progress += speed*delta
 	if has_to_slow_down:
-		speed = 0
+		slow_down(delta)
 
 
 func _on_player_area_entered(area):
@@ -30,7 +32,13 @@ func slow_down(delta:float) -> void:
 	speed -= delta * slow_down_scale  # Diminue progressivement
 	if speed < 0.05 : 
 		speed = 0
+	print("speed : ", speed, " detla : ", delta, " slow down scale : ", slow_down_scale)
 
 func qte_success() -> void:
 	has_to_slow_down = false
 	speed = 200
+
+func calculate_braking_force(speed: float) -> float:
+	var a = 0.01422529440908359703105520436145
+	var b = 1.861
+	return a * pow(speed, b)
