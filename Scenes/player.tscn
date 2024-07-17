@@ -7,7 +7,7 @@ size = Vector2(129, 132)
 
 [node name="Player" type="Area2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." groups=["cameras"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_r7u26")

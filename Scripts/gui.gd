@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var timer : Timer = %Timer
+@onready var timer : Timer = %Chrono
 @onready var timer_label = %TimerLabel
 
 # Called when the node enters the scene tree for the first time.
@@ -24,3 +24,8 @@ func array_to_min_and_sec_string(min_and_sec:Array[int])-> String:
 	if min_and_sec[0] <= 0:
 		return str(min_and_sec[1]) + "s"
 	return str(min_and_sec[0]) + "m " + str(min_and_sec[1]) + "s"
+
+
+func _on_timer_timeout():
+	print("End of the game")
+	Engine.time_scale = 0

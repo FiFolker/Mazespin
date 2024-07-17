@@ -1,61 +1,84 @@
 extends Area2D
+class_name QTEArea
 
-signal slow_down
+signal qte_done
+signal qte_win
+signal qte_lose
 
-var slowing : bool = false
-var time_scale : float = 1.0
-var factor_scale : float = 5.0
+@export var number_of_qte:int
+@onready var key_info = %KeyInfo
+@onready var remaining_time = %RemainingTime
+
+var index_qte : int = 0
+var camera:Camera2D
+var action_name : String
+
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if Input.is_action_just_pressed("ui_accept"):
-		slowing = false
-		print("Acceleration triggered: ", slowing)
+func _ready() -> void:
+	# define qte action name
+	action_name = "qte_" + OptionsValues.get_platform_as_string().to_lower() 
 	
-	if slowing:
-		if time_scale > 0:
-			slow_time(delta)
-	else:
-		time_scale = 1.0
-		Engine.time_scale = time_scale
+	# Search cameras in group "cameras"
+	camera = null
+	for cam in get_tree().get_nodes_in_group("cameras"):
+		if cam is Camera2D:
+			camera = cam
+			break
+			
+	if camera == null:
+		print("Aucune caméra trouvée dans le groupe 'cameras'")
+		return
 
-func slow_time(delta:float) -> void:
-	time_scale -= delta * factor_scale  # Diminue progressivement
-	if time_scale < 0.05 : 
-		time_scale = 0
-	Engine.time_scale = time_scale
-	#print("Slowing time: ", Engine.time_scale, ", factor_scale: ", factor_scale)
+func _process(delta:float) -> void:
+	if $QTETimer.time_left > 0:
+		remaining_time.text = str($QTETimer.time_left).pad_decimals(2)
 
-func qte():
-	var x = randf_range(0, get_viewport().get_visible_rect().size.x)
-	var y = randf_range(0, get_viewport().get_visible_rect().size.y)
-	print(x, " : " ,y)
+func _input(event:InputEvent) -> void:
+	if event.is_action_pressed("current_qte"):
+		clear_qte()
+		qte_done.emit()
+
+func generate_qte() -> void:
+	index_qte += 1
+	$QTEDisplay.global_position = rand_position_on_cam()
 	var key : InputEvent = get_random_key_from_pool()
-	print(key)
-	if Input.is_action_just_pressed("qte"):
-		print("qte pressed")
-		slowing = false
-	if key is InputEventKey:
-		print("is eventkey")
-		if Input.is_key_pressed(KEY_SHIFT):
-			print("Selected key pressed for QTE ")
+	key_info.text = key.as_text()
+	InputMap.action_add_event("current_qte", key)
+	$QTETimer.start()
+	
+func clear_qte() -> void:
+	$QTETimer.stop()
+	key_info.text = ""
+	remaining_time.text = ""
+	InputMap.action_erase_events("current_qte")
+	print(InputMap.action_get_events("current_qte"))
+
+func rand_position_on_cam() -> Vector2:
+	# Get the position x and y of the origin of the cam (top left btw)
+	var cam_pos_x : float = camera.get_screen_center_position().x - (get_viewport_rect().size.x/2)
+	var cam_pos_y : float = camera.get_screen_center_position().y - (get_viewport_rect().size.y/2)
+	# Generate rand pos in the cam limits 
+	var x = randf_range(cam_pos_x, cam_pos_x + get_viewport_rect().size.x)
+	var y = randf_range(cam_pos_y, cam_pos_y + (get_viewport_rect().size.y/2))
+	
+	return Vector2(x,y)
 
 func get_random_key_from_pool() -> InputEvent:
-	var action_name : String = "qte"
 	var keys : Array[InputEvent] = InputMap.action_get_events(action_name)
 	var random_index : int = randi() % keys.size()
 	var random_event : InputEvent = keys[random_index]
 	return random_event
 
-func _on_area_entered(area):
-	print("area entered")
-	slowing = true
-	qte()
-	
-func _on_area_exited(area):
-	print("area exited")
+
+func _on_qte_timer_timeout():
+	print("lose ... too slow")
+	clear_qte()
+	qte_lose.emit()
+
+func _on_qte_done():
+	if index_qte < number_of_qte:
+		generate_qte()
+	else:
+		qte_win.emit()
+		print("win")

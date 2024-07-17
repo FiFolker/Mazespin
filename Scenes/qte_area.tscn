@@ -7,9 +7,35 @@ size = Vector2(232, 42)
 
 [node name="QTEArea" type="Area2D"]
 script = ExtResource("1_fv0a8")
+number_of_qte = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6qvft")
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[node name="QTEDisplay" type="Control" parent="."]
+z_index = 99
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="QTEDisplay"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="KeyInfo" type="Label" parent="QTEDisplay/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="RemainingTime" type="Label" parent="QTEDisplay/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="QTETimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="qte_done" from="." to="." method="_on_qte_done"]
+[connection signal="timeout" from="QTETimer" to="." method="_on_qte_timer_timeout"]
