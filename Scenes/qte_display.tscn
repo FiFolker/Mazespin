@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvfxnyqtgg3ge"]
+
+[ext_resource type="Script" path="res://Scripts/qte/qte_display.gd" id="1_w0h3h"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_w0h3h")
+
+[node name="QTEDisplay" type="PanelContainer" parent="."]
+offset_right = 1.0
+offset_bottom = 54.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="QTEDisplay"]
+layout_mode = 2
+
+[node name="KeyPng" type="TextureRect" parent="QTEDisplay/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="KeyInfo" type="Label" parent="QTEDisplay/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RemainingTime" type="Label" parent="QTEDisplay/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1

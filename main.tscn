@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://ctbick08lhn73"]
+[gd_scene load_steps=9 format=3 uid="uid://ctbick08lhn73"]
 
-[ext_resource type="Script" path="res://Scripts/gui.gd" id="1_g0imb"]
+[ext_resource type="Script" path="res://Scripts/gui/gui.gd" id="1_g0imb"]
 [ext_resource type="PackedScene" uid="uid://xr0cftkymv3u" path="res://Scenes/qte_area.tscn" id="2_5d36x"]
+[ext_resource type="Script" path="res://Scripts/gui/progression.gd" id="2_hslwq"]
 [ext_resource type="PackedScene" uid="uid://c0tlil63xy6bk" path="res://Scenes/player.tscn" id="2_m103x"]
 [ext_resource type="Script" path="res://Scripts/rail.gd" id="3_1pt2a"]
 [ext_resource type="Script" path="res://Scripts/OptionsValues.gd" id="5_t2mrx"]
@@ -11,13 +12,17 @@
 [sub_resource type="Curve2D" id="Curve2D_reel6"]
 bake_interval = 64.0
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 100, 50, 0, 0, 0, 0, 101, -236, 0, 0, 0, 0, 321, -236, 0, 0, 0, 0, 321.018, -282.326, 0, 0, 0, 0, 328, -1179, 0, 0, 0, 0, 328, -1176)
+"points": PackedVector2Array(0, 0, 0, 0, 100, 50, 0, 0, 0, 0, 101, -236, 0, 0, 0, 0, 321, -236, 0, 0, 0, 0, 321.018, -282.326, 0, 0, 0, 0, 328, -1179)
 }
-point_count = 6
+point_count = 5
 
 [node name="Main" type="Node2D"]
 metadata/_edit_vertical_guides_ = [640.0]
 metadata/_edit_horizontal_guides_ = [390.0]
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(5959.18, -977.28)
+scale = Vector2(2.89, 2.89)
 
 [node name="GUI" type="CanvasLayer" parent="."]
 script = ExtResource("1_g0imb")
@@ -26,16 +31,34 @@ script = ExtResource("1_g0imb")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -66.5
-offset_right = 66.5
-offset_bottom = 40.0
+offset_left = -66.0
+offset_right = 67.0
+offset_bottom = 57.0
 grow_horizontal = 2
 
-[node name="TimerLabel" type="Label" parent="GUI/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/PanelContainer"]
+layout_mode = 2
+
+[node name="ChronoLabel" type="Label" parent="GUI/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Chrono"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TimerLabel" type="Label" parent="GUI/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 3
 text = "	"
 horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="GUI"]
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 169.0
+offset_bottom = 42.0
+script = ExtResource("2_hslwq")
 
 [node name="Chrono" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -57,23 +80,38 @@ scale = Vector2(83.0001, 220.321)
 mesh = SubResource("BoxMesh_7iiwr")
 
 [node name="MeshInstance2D3" type="MeshInstance2D" parent="Level"]
-position = Vector2(867, 206.25)
-scale = Vector2(83.0001, 328.5)
+position = Vector2(867, -80.75)
+scale = Vector2(83.0001, 902.5)
 mesh = SubResource("BoxMesh_7iiwr")
 
 [node name="QTEArea" parent="Level" instance=ExtResource("2_5d36x")]
 position = Vector2(867, 40)
+scale = Vector2(2.89, 2.89)
+number_of_qte = 2
+difficulty = 5
+
+[node name="QTEArea2" parent="Level" instance=ExtResource("2_5d36x")]
+position = Vector2(867, -529)
+scale = Vector2(2.89, 2.89)
+number_of_qte = 5
+difficulty = 1
+
+[node name="QTEArea3" parent="Level" instance=ExtResource("2_5d36x")]
+position = Vector2(651, 406)
+scale = Vector2(2.89, 2.89)
+number_of_qte = 5
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2(544, 647)
 curve = SubResource("Curve2D_reel6")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+unique_name_in_owner = true
 position = Vector2(100, 50)
 rotation = -1.5673
 loop = false
 script = ExtResource("3_1pt2a")
-speed = 1000.0
+speed = 250.0
 
 [node name="Player" parent="Path2D/PathFollow2D" instance=ExtResource("2_m103x")]
 

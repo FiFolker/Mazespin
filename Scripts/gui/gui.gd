@@ -9,7 +9,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(delta:float):
 	timer_label.text = array_to_min_and_sec_string(convert_sec_in_min(timer.time_left))
 
 func convert_sec_in_min(sec:float)->Array[int]:
@@ -27,5 +27,4 @@ func array_to_min_and_sec_string(min_and_sec:Array[int])-> String:
 
 
 func _on_timer_timeout():
-	print("End of the game")
 	Engine.time_scale = 0
