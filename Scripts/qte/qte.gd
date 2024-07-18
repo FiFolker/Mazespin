@@ -26,8 +26,7 @@ func _ready():
 	
 	generate_qte()
 
-func _input(event:InputEvent) -> void:
-	
+func _input(event:InputEvent) -> void:	
 	if event.is_action_pressed("current_qte") and key_released:
 		key_released = false
 		qte_done.emit()
@@ -48,9 +47,15 @@ func _input(event:InputEvent) -> void:
 #region QTE logic
 func generate_qte() -> void:
 	var key : InputEvent = get_random_key_from_pool()
-	print(key.as_text())
+	print("on generation raw : ", key)
+	print("on generation as text : ", key.as_text())
+	var key_txt = key.as_text()
+	if key is InputEventJoypadButton:
+		key_txt = str(key.button_index)
+	
 	InputMap.action_add_event("current_qte", key)
-	qte_display(key.as_text(), qte_timer)
+	
+	qte_display(key_txt, qte_timer)
 	qte_timer.start()
 
 func qte_display(key_text:String, timer_reference:Timer) -> void:
