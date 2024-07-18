@@ -1,6 +1,9 @@
 extends PathFollow2D
 
-@export var speed:float = 100
+@export var max_speed:float = 100
+@onready var speed:float = max_speed :
+	set(value):
+		speed = clampf(value, 0, max_speed)
 
 var speed_change_ratio : float
 

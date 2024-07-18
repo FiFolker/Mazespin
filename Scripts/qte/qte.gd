@@ -25,16 +25,17 @@ func _ready():
 	generate_qte()
 
 func _input(event:InputEvent) -> void:
+	
 	if event.is_action_pressed("current_qte"):
 		print("action pressed")
 		qte_done.emit()
 		clear_qte()
 		
 	# it doesn't work 'cause when i press the key it will fail the following keys 'cause it's fast
-	#if InputMap.action_get_events("current_qte").size() > 0 and event is InputEventKey: 
-		#if !event.is_match(InputMap.action_get_events("current_qte")[0]):
-			#qte_failure.emit()
-			#clear_qte()
+	if InputMap.action_get_events("current_qte").size() > 0 and event is InputEventKey: 
+		if !event.is_match(InputMap.action_get_events("current_qte")[0]) and event.is_pressed():
+			qte_failure.emit()
+			clear_qte()
 			
 
 #region QTE logic

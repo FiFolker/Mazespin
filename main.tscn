@@ -109,7 +109,7 @@ position = Vector2(100, 50)
 rotation = -1.5673
 loop = false
 script = ExtResource("3_1pt2a")
-speed = 250.0
+max_speed = 250.0
 
 [node name="Player" parent="Path2D/PathFollow2D" instance=ExtResource("2_m103x")]
 
