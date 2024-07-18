@@ -47,8 +47,6 @@ func _input(event:InputEvent) -> void:
 #region QTE logic
 func generate_qte() -> void:
 	var key : InputEvent = get_random_key_from_pool()
-	print("on generation raw : ", key)
-	print("on generation as text : ", key.as_text())
 	var key_txt = key.as_text()
 	if key is InputEventJoypadButton:
 		key_txt = str(key.button_index)

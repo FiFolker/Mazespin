@@ -5,6 +5,9 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if OptionsValues.input == OptionsValues.INPUT.CONTROLLER:
+		input_choice.grab_focus()
+	
 	var selected_index = -1
 	var index = 0
 	

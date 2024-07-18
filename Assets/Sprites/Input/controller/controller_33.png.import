@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://biawopa0fc4f0"
-path="res://.godot/imported/controller_2.png-e25c73f0f3165da6a24ecbefab7c870d.ctex"
+uid="uid://sofmojxmwpsv"
+path="res://.godot/imported/controller_33.png-e2701913ac662d3724e4c7483f7d9b6b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Input/controller/controller_2.png"
-dest_files=["res://.godot/imported/controller_2.png-e25c73f0f3165da6a24ecbefab7c870d.ctex"]
+source_file="res://Assets/Sprites/Input/controller/controller_33.png"
+dest_files=["res://.godot/imported/controller_33.png-e2701913ac662d3724e4c7483f7d9b6b.ctex"]
 
 [params]
 
