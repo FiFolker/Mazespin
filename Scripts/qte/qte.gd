@@ -4,7 +4,7 @@ class_name QTE
 signal qte_done
 signal qte_failure
 
-const QTE_DISPLAY = preload("res://Scenes/qte_display.tscn")
+@export var QTE_DISPLAY : PackedScene
 
 @onready var qte_timer = $QTETimer
 
@@ -14,7 +14,7 @@ var qte_info : QTEDisplay
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# define qte action name
-	action_name = "qte_" + OptionsValues.get_platform_as_string().to_lower() 
+	action_name = "qte_" + OptionsValues.get_input_as_string().to_lower() 
 	
 	#define timer in function of the difficulty (i have to think deeply about the difficulty)
 	qte_timer.wait_time = OptionsValues.difficulty
@@ -31,7 +31,7 @@ func _input(event:InputEvent) -> void:
 		qte_done.emit()
 		clear_qte()
 		
-	# it doesn't work 'cause when i press the key it will fail the following keys 'cause it's fast
+	# always a litlle bit bugged not as much as before but a lil bit
 	if InputMap.action_get_events("current_qte").size() > 0 and event is InputEventKey: 
 		if !event.is_match(InputMap.action_get_events("current_qte")[0]) and event.is_pressed():
 			qte_failure.emit()

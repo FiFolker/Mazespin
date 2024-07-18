@@ -17,7 +17,7 @@ func setup(key_text:String, timer_ref:Timer):
 
 func _ready():
 	qte_display.position = Vector2(randf_range(0, get_viewport().size.x - security_margin), randf_range(0, get_viewport().size.y/2))	
-	var texture = load("res://Assets/Sprites/Input/"+OptionsValues.get_platform_as_string().to_lower()+"/"+key.to_lower()+".png")
+	var texture = load("res://Assets/Sprites/Input/"+OptionsValues.get_input_as_string().to_lower()+"/"+key.to_lower()+".png")
 	if texture != null:
 		key_png.texture = texture
 	else:

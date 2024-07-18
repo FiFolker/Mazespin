@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://xr0cftkymv3u"]
+[gd_scene load_steps=4 format=3 uid="uid://xr0cftkymv3u"]
 
 [ext_resource type="Script" path="res://Scripts/qte/qte_area.gd" id="1_g2xvh"]
+[ext_resource type="PackedScene" uid="uid://c4nidbejx6eu3" path="res://Scenes/qte/qte.tscn" id="2_ixhm2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6qvft"]
 size = Vector2(50, 50)
 
 [node name="QTEArea" type="Area2D"]
 script = ExtResource("1_g2xvh")
+QTE_SCENE = ExtResource("2_ixhm2")
 number_of_qte = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

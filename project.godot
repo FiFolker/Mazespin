@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="A few minutes late"
-run/main_scene="res://main.tscn"
+run/main_scene="res://Scenes/menus/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-OptionsValues="*res://Scripts/OptionsValues.gd"
+OptionsValues="*res://Scripts/menu/options_values.gd"
 
 [display]
 

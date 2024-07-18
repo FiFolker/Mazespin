@@ -4,7 +4,7 @@ class_name QTEArea
 signal qte_sequence_success
 signal qte_sequence_failure
 
-const QTE_SCENE = preload("res://Scenes/qte.tscn")
+@export var QTE_SCENE : PackedScene 
 var qte:QTE
 
 @export var number_of_qte:int

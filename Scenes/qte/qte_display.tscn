@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://bvfxnyqtgg3ge"]
 
-[ext_resource type="Script" path="res://Scripts/qte/qte_display.gd" id="1_w0h3h"]
+[ext_resource type="Script" path="res://Scripts/qte/qte_display.gd" id="1_5d4bg"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
-script = ExtResource("1_w0h3h")
+script = ExtResource("1_5d4bg")
 
 [node name="QTEDisplay" type="PanelContainer" parent="."]
 offset_right = 1.0
