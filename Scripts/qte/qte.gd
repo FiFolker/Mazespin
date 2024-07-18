@@ -11,6 +11,8 @@ signal qte_failure
 var action_name : String
 var qte_info : QTEDisplay
 
+var key_released : bool = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# define qte action name
@@ -26,17 +28,22 @@ func _ready():
 
 func _input(event:InputEvent) -> void:
 	
-	if event.is_action_pressed("current_qte"):
+	if event.is_action_pressed("current_qte") and key_released:
 		print("action pressed")
+		key_released = false
 		qte_done.emit()
 		clear_qte()
 		
 	# always a litlle bit bugged not as much as before but a lil bit
 	if InputMap.action_get_events("current_qte").size() > 0 and event is InputEventKey: 
-		if !event.is_match(InputMap.action_get_events("current_qte")[0]) and event.is_pressed():
+		if !event.is_match(InputMap.action_get_events("current_qte")[0]) and event.is_pressed() and key_released:
+			key_released = false
 			qte_failure.emit()
 			clear_qte()
 			
+	# reset bool when key released
+	if event is InputEventKey and !event.is_pressed():
+		key_released = true
 
 #region QTE logic
 func generate_qte() -> void:
