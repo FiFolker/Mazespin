@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://da20kv8p33ary"
-path="res://.godot/imported/ctrl.png-3f1f1af9bcdda3ddd5db19e0b6bf54ce.ctex"
+uid="uid://dro6dv7rcr6k1"
+path="res://.godot/imported/keyboard_shift.png-40a15d984eccb96a73fc6fae24352b26.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Input/pc/ctrl.png"
-dest_files=["res://.godot/imported/ctrl.png-3f1f1af9bcdda3ddd5db19e0b6bf54ce.ctex"]
+source_file="res://Assets/Sprites/Input/keyboard/keyboard_shift.png"
+dest_files=["res://.godot/imported/keyboard_shift.png-40a15d984eccb96a73fc6fae24352b26.ctex"]
 
 [params]
 

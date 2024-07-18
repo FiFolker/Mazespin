@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dshpalycsditn"
-path="res://.godot/imported/e.png-b1d218d1944db7fbac3b56d0ac8a6990.ctex"
+uid="uid://deacgvbmewyl2"
+path="res://.godot/imported/keyboard_space.png-7427f04a1d5b4b56106e5dfa7300afec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Input/pc/e.png"
-dest_files=["res://.godot/imported/e.png-b1d218d1944db7fbac3b56d0ac8a6990.ctex"]
+source_file="res://Assets/Sprites/Input/keyboard/keyboard_space.png"
+dest_files=["res://.godot/imported/keyboard_space.png-7427f04a1d5b4b56106e5dfa7300afec.ctex"]
 
 [params]
 

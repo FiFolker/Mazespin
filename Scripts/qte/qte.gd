@@ -29,25 +29,26 @@ func _ready():
 func _input(event:InputEvent) -> void:
 	
 	if event.is_action_pressed("current_qte") and key_released:
-		print("action pressed")
 		key_released = false
 		qte_done.emit()
 		clear_qte()
 		
 	# always a litlle bit bugged not as much as before but a lil bit
-	if InputMap.action_get_events("current_qte").size() > 0 and event is InputEventKey: 
-		if !event.is_match(InputMap.action_get_events("current_qte")[0]) and event.is_pressed() and key_released:
-			key_released = false
-			qte_failure.emit()
-			clear_qte()
+	if InputMap.action_get_events("current_qte").size() > 0 : 
+		if event is InputEventKey or event is InputEventJoypadButton:
+			if !event.is_match(InputMap.action_get_events("current_qte")[0]) and event.is_pressed() and key_released:
+				key_released = false
+				qte_failure.emit()
+				clear_qte()
 			
 	# reset bool when key released
-	if event is InputEventKey and !event.is_pressed():
+	if event is InputEventKey or event is InputEventJoypadButton and !event.is_pressed():
 		key_released = true
 
 #region QTE logic
 func generate_qte() -> void:
 	var key : InputEvent = get_random_key_from_pool()
+	print(key.as_text())
 	InputMap.action_add_event("current_qte", key)
 	qte_display(key.as_text(), qte_timer)
 	qte_timer.start()

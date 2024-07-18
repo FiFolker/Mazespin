@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://3awaxouw0iym"]
+
+[ext_resource type="Texture2D" uid="uid://bj7mxoim7e1ix" path="res://Resources/Input/keyboard/keyboard_ctrl.png" id="1_if00s"]
+[ext_resource type="Texture2D" uid="uid://xxbhqrb3dppr" path="res://Resources/Input/keyboard/keyboard_ctrl_outline.png" id="2_ywaob"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_if00s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ywaob")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]

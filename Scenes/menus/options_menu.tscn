@@ -90,6 +90,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Menu"
 
-[connection signal="item_selected" from="PanelContainer/MarginContainer/VBoxContainer/Platform/InputChoice" to="." method="_on_platform_choice_item_selected"]
+[connection signal="item_selected" from="PanelContainer/MarginContainer/VBoxContainer/Platform/InputChoice" to="." method="_on_input_choice_item_selected"]
 [connection signal="item_selected" from="PanelContainer/MarginContainer/VBoxContainer/Difficulty/DifficultyChoice" to="." method="_on_difficulty_choice_item_selected"]
 [connection signal="button_down" from="PanelContainer/MarginContainer/VBoxContainer/MenuBtn" to="." method="_on_menu_btn_button_down"]

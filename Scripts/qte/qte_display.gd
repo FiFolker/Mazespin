@@ -3,8 +3,10 @@ class_name QTEDisplay
 
 @onready var key_info : Label = %KeyInfo
 @onready var remaining_time : Label = %RemainingTime
-@onready var key_png : TextureRect = %KeyPng
 @onready var qte_display : PanelContainer = $QTEDisplay
+@onready var key_png_animated = %KeyPngAnimated
+
+@export var duration_between_frames : float = 0.25
 
 var security_margin : float = 128
 
@@ -17,13 +19,34 @@ func setup(key_text:String, timer_ref:Timer):
 
 func _ready():
 	qte_display.position = Vector2(randf_range(0, get_viewport().size.x - security_margin), randf_range(0, get_viewport().size.y/2))	
-	var texture = load("res://Assets/Sprites/Input/"+OptionsValues.get_input_as_string().to_lower()+"/"+key.to_lower()+".png")
-	if texture != null:
-		key_png.texture = texture
+	
+	var textures : Array[Texture2D] = get_textures()
+
+	if textures.size() > 0:
+		key_png_animated.texture = AnimatedTexture.new()
+		var animated_texture : AnimatedTexture = key_png_animated.texture
+		animated_texture.frames = textures.size()
+		for i in range(textures.size()):
+			animated_texture.set_frame_texture(i, textures[i])
+			animated_texture.set_frame_duration(i, duration_between_frames)
 	else:
+		# in case he doesn't find the textures
 		key_info.text = key
 	remaining_time.text = str(timer.wait_time)
 
+func get_textures() -> Array[Texture2D]:
+	var textures : Array[Texture2D]
+	var input_name : String = OptionsValues.get_input_as_string().to_lower()
+	var path_textures : Array[String] = [
+		"res://Assets/Sprites/Input/"+input_name+"/"+input_name+"_"+key.to_lower()+".png",
+		"res://Assets/Sprites/Input/"+input_name+"/"+input_name+"_"+key.to_lower()+"_outline.png"
+	]
+	
+	for path in path_textures:
+		if ResourceLoader.exists(path):
+			textures.append(load(path))
+
+	return textures
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta:float):
 	if timer.time_left > 0:
