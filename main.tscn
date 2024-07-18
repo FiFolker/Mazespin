@@ -88,18 +88,16 @@ mesh = SubResource("BoxMesh_7iiwr")
 position = Vector2(867, 40)
 scale = Vector2(2.89, 2.89)
 number_of_qte = 2
-difficulty = 5
 
 [node name="QTEArea2" parent="Level" instance=ExtResource("2_5d36x")]
 position = Vector2(867, -529)
 scale = Vector2(2.89, 2.89)
 number_of_qte = 5
-difficulty = 1
 
 [node name="QTEArea3" parent="Level" instance=ExtResource("2_5d36x")]
 position = Vector2(651, 406)
 scale = Vector2(2.89, 2.89)
-number_of_qte = 5
+number_of_qte = 1
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2(544, 647)
