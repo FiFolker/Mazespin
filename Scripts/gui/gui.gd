@@ -27,4 +27,4 @@ func array_to_min_and_sec_string(min_and_sec:Array[int])-> String:
 
 
 func _on_timer_timeout():
-	Engine.time_scale = 0
+	GameManager.has_lost.emit()

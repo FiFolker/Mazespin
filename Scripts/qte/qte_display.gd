@@ -49,5 +49,5 @@ func get_textures() -> Array[Texture2D]:
 	return textures
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta:float):
-	if timer.time_left > 0:
+	if is_instance_valid(timer) and timer.time_left > 0:
 		remaining_time.text = str(timer.time_left).pad_decimals(2)

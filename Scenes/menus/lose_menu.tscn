@@ -1,19 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlbm5koe3uj84"]
+[gd_scene load_steps=3 format=3 uid="uid://bpqcj5133j25f"]
 
-[ext_resource type="Script" path="res://Scripts/menu/options.gd" id="1_n13cw"]
-[ext_resource type="Texture2D" uid="uid://br10ejdxtpxv8" path="res://Assets/Images/a-few-minutes-late.png" id="3_21vx5"]
+[ext_resource type="Script" path="res://Scripts/menu/end_menu.gd" id="1_356ej"]
+[ext_resource type="Texture2D" uid="uid://br10ejdxtpxv8" path="res://Assets/Images/a-few-minutes-late.png" id="2_mm440"]
 
-[node name="OptionsMenu" type="CanvasLayer"]
-script = ExtResource("1_n13cw")
+[node name="LoseMenu" type="CanvasLayer"]
+script = ExtResource("1_356ej")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect2" type="TextureRect" parent="."]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_top = -877.0
 offset_right = 1281.0
 grow_vertical = 0
-texture = ExtResource("3_21vx5")
+texture = ExtResource("2_mm440")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 8
@@ -50,39 +50,21 @@ theme_override_constants/margin_bottom = 5
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
-text = "Options"
+text = "Lose ..."
 horizontal_alignment = 1
 
 [node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Platform" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-alignment = 1
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Platform"]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer2"]
 layout_mode = 2
-text = "Platform :"
-
-[node name="InputChoice" type="OptionButton" parent="PanelContainer/MarginContainer/VBoxContainer/Platform"]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="Difficulty" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
-alignment = 1
-
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Difficulty"]
-layout_mode = 2
-text = "Difficulty :"
-
-[node name="DifficultyChoice" type="OptionButton" parent="PanelContainer/MarginContainer/VBoxContainer/Difficulty"]
-unique_name_in_owner = true
-layout_mode = 2
+text = "Too bad you were late ..."
+horizontal_alignment = 1
 
 [node name="Control2" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -93,6 +75,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Menu"
 
-[connection signal="item_selected" from="PanelContainer/MarginContainer/VBoxContainer/Platform/InputChoice" to="." method="_on_input_choice_item_selected"]
-[connection signal="item_selected" from="PanelContainer/MarginContainer/VBoxContainer/Difficulty/DifficultyChoice" to="." method="_on_difficulty_choice_item_selected"]
-[connection signal="button_down" from="PanelContainer/MarginContainer/VBoxContainer/MenuBtn" to="." method="_on_menu_btn_button_down"]
+[node name="ReplayBtn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Replay"
