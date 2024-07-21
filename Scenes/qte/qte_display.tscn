@@ -46,7 +46,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/FlairCrossOutlined:position")
+tracks/0/path = NodePath("QTEPos/QTEDisplay/FlairCrossOutlined:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -58,7 +58,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D/FlairCrossOutlined:scale")
+tracks/1/path = NodePath("QTEPos/QTEDisplay/FlairCrossOutlined:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -70,7 +70,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Node2D/FlairCrossOutlined:rotation")
+tracks/2/path = NodePath("QTEPos/QTEDisplay/FlairCrossOutlined:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -82,7 +82,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Node2D/FlairCrossOutlined:self_modulate")
+tracks/3/path = NodePath("QTEPos/QTEDisplay/FlairCrossOutlined:self_modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -94,7 +94,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("QTEDisplay:modulate")
+tracks/4/path = NodePath("QTEPos/QTEDisplay:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -106,7 +106,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Node2D/Success:position")
+tracks/5/path = NodePath("QTEPos/QTEDisplay/Success:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -118,7 +118,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Node2D/Success:rotation")
+tracks/6/path = NodePath("QTEPos/QTEDisplay/Success:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -130,7 +130,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Node2D/Success:scale")
+tracks/7/path = NodePath("QTEPos/QTEDisplay/Success:scale")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -142,7 +142,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Node2D/Success:visible")
+tracks/8/path = NodePath("QTEPos/QTEDisplay/Success:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -151,6 +151,42 @@ tracks/8/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("QTEPos/QTEDisplay:size")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(64, 91)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("QTEPos/QTEDisplay:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("QTEPos/QTEDisplay:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_1daxm"]
 resource_name = "fail"
@@ -158,7 +194,7 @@ length = 1.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/FlairCrossOutlined:visible")
+tracks/0/path = NodePath("QTEPos/QTEDisplay/FlairCrossOutlined:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -170,19 +206,19 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D/FlairCrossOutlined:position")
+tracks/1/path = NodePath("QTEPos/QTEDisplay/FlairCrossOutlined:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1.3),
-"transitions": PackedFloat32Array(1, 0.241485, 0.153893),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 0.241485),
 "update": 0,
-"values": [Vector2(35, 43), Vector2(32, 43), Vector2(32, 192)]
+"values": [Vector2(35, 43), Vector2(32, 43)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Node2D/FlairCrossOutlined:scale")
+tracks/2/path = NodePath("QTEPos/QTEDisplay/FlairCrossOutlined:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -194,7 +230,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Node2D/FlairCrossOutlined:rotation")
+tracks/3/path = NodePath("QTEPos/QTEDisplay/FlairCrossOutlined:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -206,7 +242,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Node2D/FlairCrossOutlined:self_modulate")
+tracks/4/path = NodePath("QTEPos/QTEDisplay/FlairCrossOutlined:self_modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -218,14 +254,50 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("QTEDisplay:modulate")
+tracks/5/path = NodePath("QTEPos/QTEDisplay:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 1.3),
+"times": PackedFloat32Array(0, 0.5, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("QTEPos/QTEDisplay:size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(64, 91)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("QTEPos/QTEDisplay:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.5, 1.3),
+"transitions": PackedFloat32Array(1, 0.153),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 215)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("QTEPos/QTEDisplay:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.5, 1.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [0.0, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_cvr36"]
@@ -234,7 +306,7 @@ length = 0.9
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/Success:position")
+tracks/0/path = NodePath("QTEPos/QTEDisplay/Success:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -246,7 +318,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D/Success:rotation")
+tracks/1/path = NodePath("QTEPos/QTEDisplay/Success:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -258,7 +330,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Node2D/Success:scale")
+tracks/2/path = NodePath("QTEPos/QTEDisplay/Success:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -270,7 +342,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Node2D/Success:visible")
+tracks/3/path = NodePath("QTEPos/QTEDisplay/Success:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -290,12 +362,18 @@ _data = {
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_5d4bg")
 
-[node name="QTEDisplay" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(64, 91)
-offset_right = 1.0
-offset_bottom = 54.0
+[node name="QTEPos" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="QTEDisplay"]
+[node name="QTEDisplay" type="PanelContainer" parent="QTEPos"]
+custom_minimum_size = Vector2(64, 91)
+offset_right = 64.0
+offset_bottom = 91.0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="QTEPos/QTEDisplay"]
 visible = false
 emitting = false
 amount = 40
@@ -305,43 +383,42 @@ lifetime = 10.0
 preprocess = 15.0
 visibility_rect = Rect2(0, 0, 64, 90)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="QTEDisplay"]
+[node name="VBoxContainer" type="VBoxContainer" parent="QTEPos/QTEDisplay"]
 layout_mode = 2
 
-[node name="KeyPngAnimated" type="TextureRect" parent="QTEDisplay/VBoxContainer"]
+[node name="KeyPngAnimated" type="TextureRect" parent="QTEPos/QTEDisplay/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="KeyInfo" type="Label" parent="QTEDisplay/VBoxContainer"]
+[node name="KeyInfo" type="Label" parent="QTEPos/QTEDisplay/VBoxContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RemainingTime" type="Label" parent="QTEDisplay/VBoxContainer"]
+[node name="RemainingTime" type="Label" parent="QTEPos/QTEDisplay/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_xh58b")
-}
-speed_scale = 2.0
-
-[node name="Node2D" type="Node2D" parent="."]
-
-[node name="Success" type="Sprite2D" parent="Node2D"]
-visible = false
-position = Vector2(32, 46)
-scale = Vector2(1.71875, 1.71875)
-texture = ExtResource("4_yx7ar")
-
-[node name="FlairCrossOutlined" type="Sprite2D" parent="Node2D"]
+[node name="FlairCrossOutlined" type="Sprite2D" parent="QTEPos/QTEDisplay"]
 self_modulate = Color(1, 1, 1, 0)
 position = Vector2(32, 44)
 rotation = 0.523599
 scale = Vector2(1.85938, 1.85938)
 texture = ExtResource("3_oqvoq")
+
+[node name="Success" type="Sprite2D" parent="QTEPos/QTEDisplay"]
+visible = false
+position = Vector2(32, 46)
+scale = Vector2(1.71875, 1.71875)
+texture = ExtResource("4_yx7ar")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xh58b")
+}
+autoplay = "RESET"
+speed_scale = 2.5

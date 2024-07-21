@@ -3,10 +3,9 @@ class_name QTEDisplay
 
 @onready var key_info : Label = %KeyInfo
 @onready var remaining_time : Label = %RemainingTime
-@onready var qte_display : PanelContainer = $QTEDisplay
 @onready var key_png_animated = %KeyPngAnimated
 @onready var animation_player = $AnimationPlayer
-@onready var anim_place = $Node2D
+@onready var qte_pos = $QTEPos
 
 @export var duration_between_frames : float = 0.25
 
@@ -20,7 +19,7 @@ func setup(key_text:String, timer_ref:Timer):
 	timer = timer_ref
 
 func _ready():
-	qte_display.position = Vector2(randf_range(0, get_viewport().size.x - security_margin), randf_range(0, get_viewport().size.y/2))	
+	qte_pos.position = Vector2(randf_range(0, get_viewport().size.x - security_margin), randf_range(0, get_viewport().size.y/2))	
 	
 	var textures : Array[Texture2D] = get_textures()
 
@@ -56,13 +55,11 @@ func _process(delta:float):
 		remaining_time.text = str(timer.time_left).pad_decimals(2)
 
 func error_animation() -> void:
-	anim_place.position = qte_display.position
 	animation_player.play("fail")
 	await animation_player.animation_finished
 	queue_free()
 
 func success_animation() -> void:
-	anim_place.position = qte_display.position
 	animation_player.play("success")
 	await animation_player.animation_finished
 	queue_free()
