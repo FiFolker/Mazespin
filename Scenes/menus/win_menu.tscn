@@ -3,8 +3,9 @@
 [ext_resource type="Script" path="res://Scripts/menu/end_menu.gd" id="1_3uvhg"]
 [ext_resource type="Texture2D" uid="uid://br10ejdxtpxv8" path="res://Assets/Images/a-few-minutes-late.png" id="2_itwpj"]
 
-[node name="WinMenu" type="CanvasLayer"]
+[node name="WinMenu" type="CanvasLayer" node_paths=PackedStringArray("default_button_to_grab")]
 script = ExtResource("1_3uvhg")
+default_button_to_grab = NodePath("PanelContainer/MarginContainer/VBoxContainer/ReplayBtn")
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 anchors_preset = 2

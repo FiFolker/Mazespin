@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dlbm5koe3uj84"]
 
-[ext_resource type="Script" path="res://Scripts/menu/options.gd" id="1_n13cw"]
+[ext_resource type="Script" path="res://Scripts/menu/options_menus.gd" id="1_n13cw"]
 [ext_resource type="Texture2D" uid="uid://br10ejdxtpxv8" path="res://Assets/Images/a-few-minutes-late.png" id="3_21vx5"]
 
 [node name="OptionsMenu" type="CanvasLayer"]
