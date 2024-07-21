@@ -1015,7 +1015,7 @@ point_count = 5
 [node name="Main" type="Node2D"]
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(5959.18, -977.28)
+position = Vector2(1735, 427)
 scale = Vector2(2.89, 2.89)
 
 [node name="GUI" type="CanvasLayer" parent="."]
@@ -1091,7 +1091,7 @@ number_of_qte = 5
 [node name="QTEArea3" parent="Level" instance=ExtResource("3_u32jv")]
 position = Vector2(651, 406)
 scale = Vector2(2.89, 2.89)
-number_of_qte = 1
+number_of_qte = 15
 
 [node name="TileMap" type="TileMap" parent="Level"]
 tile_set = SubResource("TileSet_c2cvc")

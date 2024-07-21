@@ -25,6 +25,5 @@ func array_to_min_and_sec_string(min_and_sec:Array[int])-> String:
 		return str(min_and_sec[1]) + "s"
 	return str(min_and_sec[0]) + "m " + str(min_and_sec[1]) + "s"
 
-
 func _on_timer_timeout():
 	GameManager.has_lost.emit()

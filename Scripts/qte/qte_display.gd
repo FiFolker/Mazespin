@@ -19,7 +19,9 @@ func setup(key_text:String, timer_ref:Timer):
 	timer = timer_ref
 
 func _ready():
-	qte_pos.position = Vector2(randf_range(0, get_viewport().size.x - security_margin), randf_range(0, get_viewport().size.y/2))	
+	var screen_size  : Vector2 = get_viewport().get_visible_rect().size
+	qte_pos.position = Vector2(randf_range(0, screen_size.x - security_margin), randf_range(0, screen_size.y/2))
+	
 	
 	var textures : Array[Texture2D] = get_textures()
 
