@@ -1057,7 +1057,7 @@ script = ExtResource("2_hslwq")
 [node name="Chrono" type="Timer" parent="."]
 unique_name_in_owner = true
 process_callback = 0
-wait_time = 2.0
+wait_time = 45.0
 autostart = true
 
 [node name="Level" type="Node2D" parent="."]
@@ -1097,7 +1097,6 @@ number_of_qte = 1
 tile_set = SubResource("TileSet_c2cvc")
 format = 2
 layer_0/name = "Road"
-layer_0/tile_data = PackedInt32Array(196605, 589824, 21, 131069, 589824, 21, 65533, 589824, 21, -3, 589824, 21, 131070, 720896, 19, 65534, 720896, 19, 65531, 720896, 19, 131067, 720896, 19, 196606, 720896, 19, -131077, 720896, 19, -65541, 720896, 19, -5, 720896, 19, 196603, 720896, 19, -2, 720896, 19, -65538, 720896, 19, -131074, 720896, 19, -196610, 720896, 19, -196611, 589824, 21, -262147, 589824, 21, -65539, 589824, 21, -131075, 589824, 21, -196613, 720896, 19, -327682, 720896, 19, -327683, 589824, 21, -262149, 720896, 19, -327685, 720896, 19, -262146, 720896, 19)
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2(544, 647)

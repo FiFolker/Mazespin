@@ -3,10 +3,10 @@ extends Node
 signal has_won
 signal has_lost
 
-var lose_scene : PackedScene = preload("res://Scenes/menus/lose_menu.tscn")
-var win_scene : PackedScene = preload("res://Scenes/menus/win_menu.tscn")
+var lose_scene : PackedScene = load("res://Scenes/menus/lose_menu.tscn")
+var win_scene : PackedScene = load("res://Scenes/menus/win_menu.tscn")
 
-var game_scene : PackedScene = preload("res://main.tscn")
+var game_scene : PackedScene = load("res://main.tscn")
 
 func _ready():
 	has_won.connect(win)

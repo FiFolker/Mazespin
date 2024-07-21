@@ -1,13 +1,309 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvfxnyqtgg3ge"]
+[gd_scene load_steps=16 format=3 uid="uid://bvfxnyqtgg3ge"]
 
 [ext_resource type="Script" path="res://Scripts/qte/qte_display.gd" id="1_5d4bg"]
+[ext_resource type="Texture2D" uid="uid://dn62g80vynrho" path="res://Assets/VFX/Particles/circle_01.png" id="2_cldd7"]
+[ext_resource type="Texture2D" uid="uid://blq0tccx134uc" path="res://Assets/Flairs/error.png" id="3_oqvoq"]
+[ext_resource type="Texture2D" uid="uid://b2nvwktamq2i3" path="res://Assets/Flairs/success.png" id="4_yx7ar"]
+
+[sub_resource type="Curve" id="Curve_75t8f"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.241706, 1), 0.0, 0.0, 0, 0, Vector2(0.454976, 0.043956), 0.0, 0.0, 0, 0, Vector2(0.597156, 0.912088), 0.0, 0.0, 0, 0, Vector2(0.748815, 0.120879), 0.0, 0.0, 0, 0, Vector2(0.886256, 0.714286), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="CurveTexture" id="CurveTexture_e1e3r"]
+curve = SubResource("Curve_75t8f")
+
+[sub_resource type="Gradient" id="Gradient_drdiq"]
+offsets = PackedFloat32Array(0, 0.202186, 0.442623, 0.775956)
+colors = PackedColorArray(0, 1, 0, 1, 0.0181515, 0.42586, 0.019103, 1, 0.572549, 0.505882, 0.137255, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0blvc"]
+gradient = SubResource("Gradient_drdiq")
+
+[sub_resource type="Curve" id="Curve_hsh7o"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1gqvj"]
+curve = SubResource("Curve_hsh7o")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k3pww"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(64, 90, 1)
+angle_min = -60.0
+angle_max = 60.0
+angle_curve = SubResource("CurveTexture_e1e3r")
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_1gqvj")
+color_ramp = SubResource("GradientTexture1D_0blvc")
+
+[sub_resource type="Animation" id="Animation_mombs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/FlairCrossOutlined:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(32, 44)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/FlairCrossOutlined:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.85938, 1.85938)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/FlairCrossOutlined:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.523599]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/FlairCrossOutlined:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("QTEDisplay:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Node2D/Success:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(32, 46)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Node2D/Success:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Node2D/Success:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.71875, 1.71875)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Node2D/Success:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_1daxm"]
+resource_name = "fail"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/FlairCrossOutlined:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/FlairCrossOutlined:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.3),
+"transitions": PackedFloat32Array(1, 0.241485, 0.153893),
+"update": 0,
+"values": [Vector2(35, 43), Vector2(32, 43), Vector2(32, 192)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/FlairCrossOutlined:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 0.241485),
+"update": 0,
+"values": [Vector2(1.85938, 1.85938), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/FlairCrossOutlined:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.9, 1.3),
+"transitions": PackedFloat32Array(1, 0.241485, 0.153893, 0.153893),
+"update": 0,
+"values": [0.523599, 0.0, 0.436332, -0.436332]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node2D/FlairCrossOutlined:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("QTEDisplay:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cvr36"]
+resource_name = "success"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Success:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(32, 46), Vector2(32, 31)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/Success:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.436332, -0.436332, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/Success:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.71875, 1.71875), Vector2(0.929688, 0.929688)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/Success:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xh58b"]
+_data = {
+"RESET": SubResource("Animation_mombs"),
+"fail": SubResource("Animation_1daxm"),
+"success": SubResource("Animation_cvr36")
+}
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_5d4bg")
 
 [node name="QTEDisplay" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(64, 91)
 offset_right = 1.0
 offset_bottom = 54.0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="QTEDisplay"]
+visible = false
+emitting = false
+amount = 40
+process_material = SubResource("ParticleProcessMaterial_k3pww")
+texture = ExtResource("2_cldd7")
+lifetime = 10.0
+preprocess = 15.0
+visibility_rect = Rect2(0, 0, 64, 90)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="QTEDisplay"]
 layout_mode = 2
@@ -18,6 +314,7 @@ layout_mode = 2
 
 [node name="KeyInfo" type="Label" parent="QTEDisplay/VBoxContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -27,3 +324,24 @@ unique_name_in_owner = true
 layout_mode = 2
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xh58b")
+}
+speed_scale = 2.0
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Success" type="Sprite2D" parent="Node2D"]
+visible = false
+position = Vector2(32, 46)
+scale = Vector2(1.71875, 1.71875)
+texture = ExtResource("4_yx7ar")
+
+[node name="FlairCrossOutlined" type="Sprite2D" parent="Node2D"]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(32, 44)
+rotation = 0.523599
+scale = Vector2(1.85938, 1.85938)
+texture = ExtResource("3_oqvoq")

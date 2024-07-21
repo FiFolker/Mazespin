@@ -10,4 +10,6 @@ QTE_DISPLAY = ExtResource("2_sqgsw")
 [node name="QTETimer" type="Timer" parent="."]
 wait_time = 5.0
 
+[connection signal="qte_done" from="." to="." method="_on_qte_done"]
+[connection signal="qte_failure" from="." to="." method="_on_qte_failure"]
 [connection signal="timeout" from="QTETimer" to="." method="_on_qte_timer_timeout"]

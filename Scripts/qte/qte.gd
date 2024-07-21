@@ -62,7 +62,6 @@ func qte_display(key_text:String, timer_reference:Timer) -> void:
 	get_tree().root.add_child(qte_info)
 
 func clear_qte() -> void:
-	qte_info.queue_free()
 	qte_timer.stop()
 	queue_free()
 #endregion
@@ -77,3 +76,11 @@ func get_random_key_from_pool() -> InputEvent:
 	var random_event : InputEvent = keys[random_index]
 	return random_event
 	
+
+
+func _on_qte_done():
+	qte_info.success_animation()
+
+
+func _on_qte_failure():
+		qte_info.error_animation()

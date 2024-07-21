@@ -5,6 +5,8 @@ class_name QTEDisplay
 @onready var remaining_time : Label = %RemainingTime
 @onready var qte_display : PanelContainer = $QTEDisplay
 @onready var key_png_animated = %KeyPngAnimated
+@onready var animation_player = $AnimationPlayer
+@onready var anim_place = $Node2D
 
 @export var duration_between_frames : float = 0.25
 
@@ -31,6 +33,7 @@ func _ready():
 			animated_texture.set_frame_duration(i, duration_between_frames)
 	else:
 		# in case he doesn't find the textures
+		key_info.visible = true
 		key_info.text = key
 	remaining_time.text = str(timer.wait_time)
 
@@ -51,3 +54,15 @@ func get_textures() -> Array[Texture2D]:
 func _process(delta:float):
 	if is_instance_valid(timer) and timer.time_left > 0:
 		remaining_time.text = str(timer.time_left).pad_decimals(2)
+
+func error_animation() -> void:
+	anim_place.position = qte_display.position
+	animation_player.play("fail")
+	await animation_player.animation_finished
+	queue_free()
+
+func success_animation() -> void:
+	anim_place.position = qte_display.position
+	animation_player.play("success")
+	await animation_player.animation_finished
+	queue_free()
