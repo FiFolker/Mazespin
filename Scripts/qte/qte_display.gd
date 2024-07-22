@@ -2,10 +2,10 @@ extends CanvasLayer
 class_name QTEDisplay
 
 @onready var key_info : Label = %KeyInfo
-@onready var remaining_time : Label = %RemainingTime
 @onready var key_png_animated = %KeyPngAnimated
 @onready var animation_player = $AnimationPlayer
 @onready var qte_pos = $QTEPos
+@onready var clock_progress = %ClockProgress
 
 @export var duration_between_frames : float = 0.25
 
@@ -36,7 +36,6 @@ func _ready():
 		# in case he doesn't find the textures
 		key_info.visible = true
 		key_info.text = key
-	remaining_time.text = str(timer.wait_time)
 
 func get_textures() -> Array[Texture2D]:
 	var textures : Array[Texture2D]
@@ -54,7 +53,7 @@ func get_textures() -> Array[Texture2D]:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta:float):
 	if is_instance_valid(timer) and timer.time_left > 0:
-		remaining_time.text = str(timer.time_left).pad_decimals(2)
+		clock_progress.value = absf(timer.time_left/timer.wait_time - 1.0) * 100
 
 func error_animation() -> void:
 	animation_player.play("fail")
