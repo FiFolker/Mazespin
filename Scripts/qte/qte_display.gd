@@ -57,10 +57,6 @@ func _process(delta:float):
 
 func error_animation() -> void:
 	animation_player.play("fail")
-	await animation_player.animation_finished
-	queue_free()
 
 func success_animation() -> void:
 	animation_player.play("success")
-	await animation_player.animation_finished
-	queue_free()
