@@ -84,4 +84,4 @@ qte_controller={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://Assets/Translations/translation_mazespin.en.translation", "res://Assets/Translations/translation_mazespin.fr.translation")
+locale/translations=PackedStringArray("res://Assets/Translations/translation_mazespin - General.en.translation", "res://Assets/Translations/translation_mazespin - General.fr.translation")

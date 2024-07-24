@@ -6,9 +6,7 @@ signal has_lost
 signal scene_changed(old_scene_path:String)
 
 var scenes : Dictionary = {}
-
 const menu_path : String = "res://Scenes/menus/"
-
 var previous_scene : String
 
 func _ready():

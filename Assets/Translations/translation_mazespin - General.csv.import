@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://cv5ompa8e0vqp"
+
+[deps]
+
+files=["res://Assets/Translations/translation_mazespin - General.en.translation", "res://Assets/Translations/translation_mazespin - General.fr.translation"]
+
+source_file="res://Assets/Translations/translation_mazespin - General.csv"
+dest_files=["res://Assets/Translations/translation_mazespin - General.en.translation", "res://Assets/Translations/translation_mazespin - General.fr.translation"]
+
+[params]
+
+compress=true
+delimiter=0

@@ -1,0 +1,18 @@
+key,en,fr
+SINGLEPLAYER,Singleplayer,Solo
+MULTIPLAYER,Multiplayer,Multijoueur
+OPTIONS,Options,Options
+QUIT,Quit,Quitter
+MODE,Mode,Mode
+TRACK,Track,Circuit
+CARS,Cars,Voitures
+RACE,Race,Course
+AI,AI,IA
+INPUT,Input,Périphérique
+LANGUAGE,Language,Langage
+LOSE,Lose,Défaite
+WIN,Win,Victoire
+MENU,Menu,Menu
+REPLAY,Replay,Replay
+LOSE_TXT,You're bad,T'es guez
+WIN_TXT,Ez,Ez
