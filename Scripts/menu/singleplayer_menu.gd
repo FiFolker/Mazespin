@@ -5,6 +5,7 @@ enum MODE {CHRONO, AI}
 @export var menu_scene : PackedScene
 @onready var difficulty_choice : OptionButton = %Difficulty
 @onready var mode_place : VBoxContainer = %Mode
+@onready var track_place : VBoxContainer = %Track
 @onready var cars_selection : GridContainer = %CarsSelection
 @onready var info_dialog : AcceptDialog = $InfoDialog
 
@@ -39,22 +40,24 @@ func init_tracks(tracks : Array[Resource]) -> void:
 			var btn = Button.new()
 			btn.toggle_mode = true
 			btn.name = curr_track.name
+			btn.text = curr_track.name
 			btn.button_group = load("res://Resources/ButtonGroups/track_group.tres")
 			btn.icon = curr_track.icon
 			btn.button_down.connect(track_selected.bind(curr_track))
-			cars_selection.add_child(btn)
+			track_place.add_child(btn)
 		else:
 			printerr("It's not a track ...")
 			return
 
 func init_cars(cars : Array[Resource]) -> void:
 	for curr_car in cars:
-		if curr_car is Object:
+		if curr_car is Car:
 			curr_car = curr_car as Car
 			car_list.append(curr_car)
 			var btn = Button.new()
 			btn.toggle_mode = true
 			btn.name = curr_car.name
+			btn.tooltip_text = curr_car.name
 			btn.button_group = load("res://Resources/ButtonGroups/cars_group.tres")
 			btn.icon = curr_car.sprite_small
 			btn.button_down.connect(car_selected.bind(curr_car))
@@ -76,13 +79,13 @@ func init_difficulty() -> void:
 
 func get_resources(path) -> Array[Resource]:
 	var resources : Array[Resource]
-	var dir = DirAccess.open(cars_path)
+	var dir = DirAccess.open(path)
 	if dir:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
 			if !dir.current_is_dir() :
-				resources.append(load(cars_path + file_name))
+				resources.append(load(path + file_name))
 			file_name = dir.get_next()
 	else:
 		print("An error occurred when trying to access the path.")
@@ -124,6 +127,6 @@ func _on_race_button_down() -> void:
 		info_dialog.dialog_text = "You didn't choose a car !"
 		info_dialog.show()
 		return
-	pass # Launch the race with all the parameters
+	get_tree().change_scene_to_packed(track.scene)
 
 #endregion
