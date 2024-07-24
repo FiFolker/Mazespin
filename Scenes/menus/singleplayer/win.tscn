@@ -58,7 +58,7 @@ theme_override_constants/margin_bottom = 5
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
-text = "Win"
+text = "WIN"
 horizontal_alignment = 1
 
 [node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer"]
@@ -71,7 +71,7 @@ size_flags_horizontal = 4
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer2"]
 layout_mode = 2
-text = "Well done you didn't arrive late !"
+text = "WIN_TXT"
 horizontal_alignment = 1
 
 [node name="Control2" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer"]
@@ -82,13 +82,13 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "Menu"
+text = "MENU"
 
 [node name="ReplayBtn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "Replay"
+text = "REPLAY"
 
 [connection signal="button_down" from="PanelContainer/MarginContainer/VBoxContainer/MenuBtn" to="." method="_on_menu_btn_button_down"]
 [connection signal="button_down" from="PanelContainer/MarginContainer/VBoxContainer/ReplayBtn" to="." method="_on_replay_btn_button_down"]

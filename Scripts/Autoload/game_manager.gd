@@ -7,7 +7,7 @@ signal scene_changed(old_scene_path:String)
 
 var scenes : Dictionary = {}
 
-var menu_path : String = "res://Scenes/menus/"
+const menu_path : String = "res://Scenes/menus/"
 
 var previous_scene : String
 

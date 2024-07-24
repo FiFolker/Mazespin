@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c0tlil63xy6bk"]
 
-[ext_resource type="Texture2D" uid="uid://c2hvvntxrvc65" path="res://Assets/Sprites/Cars/car_green_1.png" id="1_l3fu8"]
+[ext_resource type="Texture2D" uid="uid://dl13htw2ry1nf" path="res://Assets/Sprites/Cars/car_black_5.png" id="1_gdha2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bysr2"]
 size = Vector2(70, 132)
@@ -10,7 +10,7 @@ size = Vector2(70, 132)
 [node name="Camera2D" type="Camera2D" parent="." groups=["cameras"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_l3fu8")
+texture = ExtResource("1_gdha2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)

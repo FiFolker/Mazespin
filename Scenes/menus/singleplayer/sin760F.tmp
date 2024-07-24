@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dh7h0o16h2ke8" path="res://Assets/Images/Backgrounds/background.jpg" id="2_ls1jg"]
 [ext_resource type="Texture2D" uid="uid://iu2kokhhvd44" path="res://Assets/Images/Icons/home.png" id="3_2kpi0"]
 [ext_resource type="ButtonGroup" uid="uid://2siss306q4vs" path="res://Resources/ButtonGroups/mode_group.tres" id="4_gihp2"]
-[ext_resource type="ButtonGroup" uid="uid://3x7ej8tei6hy" path="res://Resources/ButtonGroups/track_group.tres" id="5_2rkyq"]
+[ext_resource type="ButtonGroup" uid="uid://3x7ej8tei6hy" path="res://Resources/ButtonGroups/race_group.tres" id="5_2rkyq"]
 [ext_resource type="ButtonGroup" uid="uid://c2ubvn7cx6iia" path="res://Resources/ButtonGroups/cars_group.tres" id="6_f325v"]
 [ext_resource type="Texture2D" uid="uid://bdwgg4qemnnwp" path="res://Assets/Sprites/Cars/Small/car_black_small_1.png" id="6_k36jx"]
 [ext_resource type="Texture2D" uid="uid://6m2bw84f1mnl" path="res://Assets/Images/Icons/checkered_flag.png" id="11_ltrgk"]

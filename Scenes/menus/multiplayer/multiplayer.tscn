@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://xbp3orcw2qrw"]
+
+[ext_resource type="Script" path="res://Scripts/menu/multiplayer.gd" id="1_iesw6"]
+[ext_resource type="Texture2D" uid="uid://dh7h0o16h2ke8" path="res://Assets/Images/Backgrounds/background.jpg" id="3_epaij"]
+[ext_resource type="Texture2D" uid="uid://iu2kokhhvd44" path="res://Assets/Images/Icons/home.png" id="4_fkw1d"]
+
+[node name="Multiplayer" type="CanvasLayer"]
+script = ExtResource("1_iesw6")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1920.0
+offset_top = -1012.5
+offset_right = 1920.0
+offset_bottom = 1012.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_epaij")
+expand_mode = 2
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Work In Progress ..."
+horizontal_alignment = 1
+
+[node name="Menu" type="Button" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -36.0
+offset_right = 36.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+icon = ExtResource("4_fkw1d")
+
+[connection signal="button_down" from="Menu" to="." method="_on_menu_button_down"]

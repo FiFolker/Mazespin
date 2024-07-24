@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("1_vheh1")
+name = "Black Berlin"
 sprite_small = ExtResource("3_4l4p8")
 sprite = ExtResource("2_oqf18")
 speed = 250

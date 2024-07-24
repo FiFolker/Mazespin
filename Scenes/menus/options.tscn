@@ -57,23 +57,36 @@ theme_override_constants/margin_bottom = 5
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
-text = "Options"
+text = "OPTIONS"
 horizontal_alignment = 1
 
 [node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Platform" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Input" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Platform"]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Input"]
 layout_mode = 2
-text = "Platform :"
+text = "INPUT"
 
-[node name="InputChoice" type="OptionButton" parent="PanelContainer/MarginContainer/VBoxContainer/Platform"]
+[node name="InputChoice" type="OptionButton" parent="PanelContainer/MarginContainer/VBoxContainer/Input"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Language" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Language"]
+layout_mode = 2
+text = "LANGUAGE"
+
+[node name="Language" type="OptionButton" parent="PanelContainer/MarginContainer/VBoxContainer/Language"]
 unique_name_in_owner = true
 layout_mode = 2
 
@@ -84,7 +97,8 @@ size_flags_vertical = 3
 [node name="MenuBtn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Menu"
+text = "MENU"
 
-[connection signal="item_selected" from="PanelContainer/MarginContainer/VBoxContainer/Platform/InputChoice" to="." method="_on_input_choice_item_selected"]
+[connection signal="item_selected" from="PanelContainer/MarginContainer/VBoxContainer/Input/InputChoice" to="." method="_on_input_choice_item_selected"]
+[connection signal="item_selected" from="PanelContainer/MarginContainer/VBoxContainer/Language/Language" to="." method="_on_language_item_selected"]
 [connection signal="button_down" from="PanelContainer/MarginContainer/VBoxContainer/MenuBtn" to="." method="_on_menu_btn_button_down"]
