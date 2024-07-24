@@ -47,7 +47,6 @@ func init_tracks(tracks : Array[Resource]) -> void:
 			track_place.add_child(btn)
 		else:
 			printerr("It's not a track ...")
-			return
 
 func init_cars(cars : Array[Resource]) -> void:
 	for curr_car in cars:
@@ -64,7 +63,6 @@ func init_cars(cars : Array[Resource]) -> void:
 			cars_selection.add_child(btn)
 		else:
 			printerr("It's not a car ...")
-			return
 	
 func init_difficulty() -> void:
 	var selected_index = -1

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Car" load_steps=4 format=3 uid="uid://utddgbcpr26k"]
+
+[ext_resource type="Script" path="res://Resources/Cars/cars.gd" id="1_4ibeo"]
+[ext_resource type="Texture2D" uid="uid://knts2ic3k7x5" path="res://Assets/Sprites/Cars/car_blue_1.png" id="2_v4ic3"]
+[ext_resource type="Texture2D" uid="uid://8n8na7emf2wv" path="res://Assets/Sprites/Cars/Small/car_blue_small_1.png" id="3_4hydl"]
+
+[resource]
+script = ExtResource("1_4ibeo")
+category = 0
+paint = 1
+sprite_small = ExtResource("3_4hydl")
+sprite = ExtResource("2_v4ic3")
+speed = 250

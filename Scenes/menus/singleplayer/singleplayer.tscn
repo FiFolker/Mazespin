@@ -116,6 +116,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
+focus_neighbor_right = NodePath("../Difficulty")
 icon = ExtResource("3_2kpi0")
 
 [node name="Space" type="Control" parent="MarginContainer/VBoxContainer/Confirmation"]
@@ -127,6 +128,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 tooltip_text = "Difficulty"
+focus_neighbor_left = NodePath("../Menu")
 
 [node name="Race" type="Button" parent="MarginContainer/VBoxContainer/Confirmation"]
 layout_mode = 2

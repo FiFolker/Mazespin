@@ -33,10 +33,10 @@ func setup_scenes(path:String, debug:bool):
 
 
 func win() -> void:
-	get_tree().change_scene_to_packed(scenes["win"])
+	get_tree().change_scene_to_file(scenes["win"])
 	
 func lose() -> void:
-	get_tree().change_scene_to_packed(scenes["lose"])
+	get_tree().change_scene_to_file(scenes["lose"])
 
 func on_scene_changed(old_scene_path:String) -> void:
 	previous_scene = old_scene_path
