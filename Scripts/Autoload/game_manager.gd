@@ -12,12 +12,12 @@ var menu_path : String = "res://Scenes/menus/"
 var previous_scene : String
 
 func _ready():
-	dir_contents(menu_path, true)
+	setup_scenes(menu_path, false)
 	scene_changed.connect(on_scene_changed)
 	has_won.connect(win)
 	has_lost.connect(lose)
 
-func dir_contents(path:String, debug:bool):
+func setup_scenes(path:String, debug:bool):
 	var dir = DirAccess.open(path)
 	if dir:
 		dir.list_dir_begin()
@@ -25,7 +25,7 @@ func dir_contents(path:String, debug:bool):
 		while file_name != "":
 			if dir.current_is_dir():
 				if debug : print("Found directory: " + file_name)
-				dir_contents(path+file_name, debug)
+				setup_scenes(path+file_name, debug)
 			else:
 				if debug : print("Found file: " + file_name)
 				scenes[file_name.split(".")[0].to_lower()] = path + "/" + file_name

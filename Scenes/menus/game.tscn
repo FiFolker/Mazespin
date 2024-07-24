@@ -1103,7 +1103,6 @@ curve = SubResource("Curve2D_reel6")
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 unique_name_in_owner = true
 position = Vector2(100, 50)
-rotation = -1.5673
 loop = false
 script = ExtResource("5_m0mnp")
 max_speed = 250.0
