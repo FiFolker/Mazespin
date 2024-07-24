@@ -7,8 +7,8 @@ func _ready():
 		default_button_to_grab.grab_focus()
 
 func _on_menu_btn_button_down():
-	get_tree().change_scene_to_file("res://Scenes/menus/main_menu.tscn")
+	get_tree().change_scene_to_file(GameManager.scenes["menu"])
 
 
 func _on_replay_btn_button_down():
-	get_tree().change_scene_to_packed(GameManager.game_scene)
+	get_tree().change_scene_to_packed(GameManager.scenes["game"])

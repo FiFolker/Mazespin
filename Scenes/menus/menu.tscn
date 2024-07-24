@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://xao1kchwqpdj"]
+
+[ext_resource type="Script" path="res://Scripts/menu/main_menu.gd" id="1_ti3us"]
+[ext_resource type="PackedScene" uid="uid://dlbm5koe3uj84" path="res://Scenes/menus/options.tscn" id="2_1ugxu"]
+[ext_resource type="PackedScene" uid="uid://dwfhbf731he3d" path="res://Scenes/menus/singleplayer/singleplayer.tscn" id="3_3i1ei"]
+[ext_resource type="Texture2D" uid="uid://dh7h0o16h2ke8" path="res://Assets/Images/Backgrounds/background.jpg" id="4_bi83i"]
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_ti3us")
+option_scene = ExtResource("2_1ugxu")
+singleplayer_scene = ExtResource("3_3i1ei")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1920.0
+offset_top = -1012.5
+offset_right = 1920.0
+offset_bottom = 1012.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_bi83i")
+expand_mode = 2
+stretch_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -209.0
+offset_top = -62.5
+offset_right = 209.0
+offset_bottom = 62.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SinglePlayer" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Singleplayer"
+
+[node name="Multiplayer" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Multiplayer"
+
+[node name="Option" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="button_down" from="VBoxContainer/SinglePlayer" to="." method="_on_singleplayer_btn_button_down"]
+[connection signal="button_down" from="VBoxContainer/Multiplayer" to="." method="_on_play_btn_button_down"]
+[connection signal="button_down" from="VBoxContainer/Option" to="." method="_on_option_btn_button_down"]
+[connection signal="button_down" from="VBoxContainer/Quit" to="." method="_on_quit_btn_button_down"]
