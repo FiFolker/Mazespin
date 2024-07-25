@@ -1,7 +1,5 @@
 extends CanvasLayer
 
-enum MODE {CHRONO, AI}
-
 @export var menu_scene : PackedScene
 @onready var difficulty_choice : OptionButton = %Difficulty
 @onready var mode_place : VBoxContainer = %Mode
@@ -13,7 +11,7 @@ var cars_path : String = "res://Resources/Cars/"
 var track_path : String = "res://Resources/Tracks/"
 
 # options selected
-var mode : MODE = MODE.CHRONO
+var mode : Race.MODE = Race.MODE.CHRONO
 var track : Track = null
 var car : Car = null
 
@@ -54,6 +52,7 @@ func init_cars(cars : Array[Resource]) -> void:
 			curr_car = curr_car as Car
 			car_list.append(curr_car)
 			var btn = Button.new()
+			btn.theme_type_variation = "CarButton"
 			btn.toggle_mode = true
 			btn.name = curr_car.name
 			btn.tooltip_text = curr_car.name
@@ -82,7 +81,7 @@ func get_resources(path) -> Array[Resource]:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
-			if !dir.current_is_dir() :
+			if !dir.current_is_dir() and file_name.contains(".tres"):
 				resources.append(load(path + file_name))
 			file_name = dir.get_next()
 	else:
@@ -101,11 +100,11 @@ func _on_difficulty_item_selected(index) -> void:
 	OptionsValues.difficulty = OptionsValues.DIFFICULTY[difficulty_choice.get_item_text(index)]
 
 func _on_chrono_button_down() -> void:
-	mode = MODE.CHRONO
+	mode = Race.MODE.CHRONO
 	print("changed mode to chrono")
 
 func _on_ai_button_down() -> void:
-	mode = MODE.AI
+	mode = Race.MODE.AI
 	print("changed mode to ai")
 
 func track_selected(selected_track:Track) -> void:
@@ -125,6 +124,7 @@ func _on_race_button_down() -> void:
 		info_dialog.dialog_text = "You didn't choose a car !"
 		info_dialog.show()
 		return
+	var race = Race.init(track, car, mode, true)
 	get_tree().change_scene_to_packed(track.scene) # i have to find a way to transfer data between the scenes
 
 #endregion

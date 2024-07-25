@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcti1q7n1f5br"]
+
+[ext_resource type="Script" path="res://Scripts/gui/gui.gd" id="1_k2ai6"]
+
+[node name="GUI" type="CanvasLayer"]
+script = ExtResource("1_k2ai6")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -66.0
+offset_right = 67.0
+offset_bottom = 57.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="ChronoLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Chrono"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TimerLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "	"
+horizontal_alignment = 1

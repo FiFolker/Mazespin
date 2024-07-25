@@ -1,67 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://ctbick08lhn73"]
+[gd_scene load_steps=6 format=3 uid="uid://ctbick08lhn73"]
 
-[ext_resource type="Script" path="res://Scripts/gui/gui.gd" id="1_ylspj"]
-[ext_resource type="Script" path="res://Scripts/gui/progression.gd" id="2_0qmkw"]
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_350pf"]
+[ext_resource type="PackedScene" uid="uid://donfsgt53tkmx" path="res://Scenes/route_follower.tscn" id="3_45u4u"]
 [ext_resource type="PackedScene" uid="uid://xr0cftkymv3u" path="res://Scenes/qte/qte_area.tscn" id="3_t4xsm"]
-[ext_resource type="Script" path="res://Scripts/rail.gd" id="5_m0mnp"]
-[ext_resource type="PackedScene" uid="uid://c0tlil63xy6bk" path="res://Scenes/player.tscn" id="6_umuhm"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_7iiwr"]
 
 [sub_resource type="Curve2D" id="Curve2D_reel6"]
 bake_interval = 64.0
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 100, 50, 0, 0, 0, 0, 101, -236, 0, 0, 0, 0, 321, -236, 0, 0, 0, 0, 321.018, -282.326, 0, 0, 0, 0, 328, -1179)
+"points": PackedVector2Array(0, 0, 0, 0, 100, 50, -77.1628, -70.4204, 77.1628, 70.4204, 101, -236, -34.7058, 32.7036, 34.7058, -32.7036, 330, -272, 0, 0, 0, 0, 328, -1179)
 }
-point_count = 5
+point_count = 4
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_350pf")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(1735, 427)
 scale = Vector2(2.89, 2.89)
-
-[node name="GUI" type="CanvasLayer" parent="."]
-script = ExtResource("1_ylspj")
-
-[node name="PanelContainer" type="PanelContainer" parent="GUI"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -66.0
-offset_right = 67.0
-offset_bottom = 57.0
-grow_horizontal = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GUI/PanelContainer"]
-layout_mode = 2
-
-[node name="ChronoLabel" type="Label" parent="GUI/PanelContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Chrono"
-horizontal_alignment = 1
-vertical_alignment = 2
-
-[node name="TimerLabel" type="Label" parent="GUI/PanelContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 3
-text = "	"
-horizontal_alignment = 1
-
-[node name="ProgressBar" type="ProgressBar" parent="GUI"]
-offset_left = 15.0
-offset_top = 15.0
-offset_right = 169.0
-offset_bottom = 42.0
-script = ExtResource("2_0qmkw")
-
-[node name="Chrono" type="Timer" parent="."]
-unique_name_in_owner = true
-process_callback = 0
-wait_time = 45.0
-autostart = true
 
 [node name="Level" type="Node2D" parent="."]
 
@@ -96,20 +53,10 @@ position = Vector2(651, 406)
 scale = Vector2(2.89, 2.89)
 number_of_qte = 15
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="RaceRoute" type="Path2D" parent="."]
 position = Vector2(544, 647)
 curve = SubResource("Curve2D_reel6")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+[node name="RouteFollower" parent="RaceRoute" instance=ExtResource("3_45u4u")]
 unique_name_in_owner = true
-position = Vector2(100, 50)
-rotation = -1.5673
-loop = false
-script = ExtResource("5_m0mnp")
-max_speed = 250.0
-
-[node name="Player" parent="Path2D/PathFollow2D" instance=ExtResource("6_umuhm")]
-rotation = 1.5708
-
-[connection signal="timeout" from="Chrono" to="GUI" method="_on_timer_timeout"]
-[connection signal="area_entered" from="Path2D/PathFollow2D/Player" to="Path2D/PathFollow2D" method="_on_player_area_entered"]
+max_speed = 200.0

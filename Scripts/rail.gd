@@ -7,6 +7,10 @@ extends PathFollow2D
 
 var speed_change_ratio : float
 
+func _ready():
+	max_speed = Race.car.speed
+	speed = max_speed
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta:float):
 	self.progress += speed*delta

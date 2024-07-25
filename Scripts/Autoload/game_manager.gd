@@ -2,6 +2,7 @@ extends Node
 
 signal has_won
 signal has_lost
+signal is_ended
 
 signal scene_changed(old_scene_path:String)
 
@@ -14,6 +15,7 @@ func _ready():
 	scene_changed.connect(on_scene_changed)
 	has_won.connect(win)
 	has_lost.connect(lose)
+	is_ended.connect(end)
 
 func setup_scenes(path:String, debug:bool):
 	var dir = DirAccess.open(path)
@@ -37,6 +39,9 @@ func win() -> void:
 	
 func lose() -> void:
 	get_tree().change_scene_to_file(scenes["lose"])
+
+func end() -> void:
+	get_tree().change_scene_to_file(scenes["end"])
 
 func on_scene_changed(old_scene_path:String) -> void:
 	previous_scene = old_scene_path
