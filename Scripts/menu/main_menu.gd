@@ -19,4 +19,16 @@ func _on_quit_btn_button_down():
 
 
 func _on_multiplayer_button_down():
-	get_tree().change_scene_to_file(GameManager.scenes["multiplayer"])
+	wip_dialog()
+	#get_tree().change_scene_to_file(GameManager.scenes["multiplayer"])
+
+
+func _on_driver_button_down():
+	wip_dialog()
+
+func wip_dialog() -> void:
+	var dia = AcceptDialog.new()
+	dia.dialog_text = "Work In Progress ...\nCome back later please"
+	dia.initial_position = Window.WINDOW_INITIAL_POSITION_CENTER_MAIN_WINDOW_SCREEN
+	add_child(dia)
+	dia.show()

@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://w8621vujr85u"]
+
+[ext_resource type="Script" path="res://Scripts/ui/driver_template.gd" id="1_755be"]
+[ext_resource type="Texture2D" uid="uid://bb8yrl70os50k" path="res://Assets/Sprites/Cars/Small/car_black_small_1.png" id="1_gy4u2"]
+
+[node name="DriverTemplate" type="HBoxContainer"]
+script = ExtResource("1_755be")
+
+[node name="RankingLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"LeaderboardLabel"
+text = "1"
+
+[node name="CarIcon" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("1_gy4u2")
+expand_mode = 3
+
+[node name="DriverName" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"LeaderboardLabel"
+text = "Elouan"
+
+[node name="Chrono" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"LeaderboardLabel"
+text = "1:25.051"

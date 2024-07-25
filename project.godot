@@ -20,6 +20,7 @@ config/icon="res://Assets/Images/Icons/Mazespin.png"
 OptionsValues="*res://Scripts/Autoload/options_values.gd"
 GameManager="*res://Scripts/Autoload/game_manager.gd"
 Race="*res://Scripts/Autoload/race.gd"
+DriverManager="*res://Scripts/Autoload/driver_manager.gd"
 
 [debug]
 
@@ -90,7 +91,3 @@ pause={
 [internationalization]
 
 locale/translations=PackedStringArray("res://Assets/Translations/translation_mazespin - General.en.translation", "res://Assets/Translations/translation_mazespin - General.fr.translation")
-
-[rendering]
-
-textures/canvas_textures/default_texture_filter=0

@@ -13,6 +13,8 @@ var qte_info : QTEDisplay
 
 var key_released : bool = true
 
+var qte_shown : bool = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# define qte action name
@@ -32,7 +34,6 @@ func _input(event:InputEvent) -> void:
 		qte_done.emit()
 		clear_qte()
 		
-	# always a litlle bit bugged not as much as before but a lil bit
 	if InputMap.action_get_events("current_qte").size() > 0 : 
 		if event is InputEventKey or event is InputEventJoypadButton:
 			if !event.is_match(InputMap.action_get_events("current_qte")[0]) and event.is_pressed() and key_released:
@@ -52,8 +53,8 @@ func generate_qte() -> void:
 		key_txt = str(key.button_index)
 	
 	InputMap.action_add_event("current_qte", key)
-	
-	qte_display(key_txt, qte_timer)
+	if qte_shown:
+		qte_display(key_txt, qte_timer)
 	qte_timer.start()
 
 func qte_display(key_text:String, timer_reference:Timer) -> void:

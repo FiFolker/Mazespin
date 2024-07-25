@@ -1,5 +1,5 @@
 extends Resource
-class_name Car
+class_name CarData
 
 enum Category {BERLIN, SPORTIVE, BREAK ,PICKUP, SUV} 
 enum Painting {BLACK, BLUE, GREEN, ORANGE, YELLOW}

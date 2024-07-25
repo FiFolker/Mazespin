@@ -12,11 +12,11 @@ var track_path : String = "res://Resources/Tracks/"
 
 # options selected
 var mode : Race.MODE = Race.MODE.CHRONO
-var track : Track = null
-var car : Car = null
+var track : TrackData = null
+var car : CarData = null
 
-var car_list : Array[Car]
-var track_list : Array[Track]
+var car_list : Array[CarData]
+var track_list : Array[TrackData]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,8 +32,8 @@ func _ready() -> void:
 
 func init_tracks(tracks : Array[Resource]) -> void:
 	for curr_track in tracks:
-		if curr_track is Track:
-			curr_track = curr_track as Track
+		if curr_track is TrackData:
+			curr_track = curr_track as TrackData
 			track_list.append(curr_track)
 			var btn = Button.new()
 			btn.toggle_mode = true
@@ -48,8 +48,8 @@ func init_tracks(tracks : Array[Resource]) -> void:
 
 func init_cars(cars : Array[Resource]) -> void:
 	for curr_car in cars:
-		if curr_car is Car:
-			curr_car = curr_car as Car
+		if curr_car is CarData:
+			curr_car = curr_car as CarData
 			car_list.append(curr_car)
 			var btn = Button.new()
 			btn.theme_type_variation = "CarButton"
@@ -107,11 +107,11 @@ func _on_ai_button_down() -> void:
 	mode = Race.MODE.AI
 	print("changed mode to ai")
 
-func track_selected(selected_track:Track) -> void:
+func track_selected(selected_track:TrackData) -> void:
 	if track_list.find(selected_track) != -1:
 		track = selected_track
 
-func car_selected(selected_car:Car) -> void:
+func car_selected(selected_car:CarData) -> void:
 	if car_list.find(selected_car) != -1:
 		car = selected_car
 
@@ -124,7 +124,12 @@ func _on_race_button_down() -> void:
 		info_dialog.dialog_text = "You didn't choose a car !"
 		info_dialog.show()
 		return
-	var race = Race.init(track, car, mode)
 	get_tree().change_scene_to_packed(track.scene) # i have to find a way to transfer data between the scenes
+	var driver = Driver.new()
+	driver.car_data = car
+	driver.chrono = 0.0
+	driver.driver_name = "FiFolker"
+	driver.ranking = 1
+	Race.singleplayer(track, mode, driver)
 
 #endregion

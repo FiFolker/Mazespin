@@ -27,6 +27,9 @@ texture_margin_bottom = 8.0
 modulate_color = Color(0.0432443, 0.819067, 0.199982, 1)
 
 [resource]
+BigLabel/base_type = &"Label"
+BigLabel/font_sizes/font_size = 48
+BigLabel/fonts/font = ExtResource("1_gxnlp")
 Button/fonts/font = ExtResource("1_gxnlp")
 CarButton/base_type = &"Button"
 CarButton/colors/font_color = Color(1, 1, 1, 1)
@@ -38,3 +41,6 @@ CountdownLabel/base_type = &"Label"
 CountdownLabel/font_sizes/font_size = 186
 CountdownLabel/fonts/font = ExtResource("1_gxnlp")
 Label/fonts/font = ExtResource("1_gxnlp")
+LeaderboardLabel/base_type = &"Label"
+LeaderboardLabel/font_sizes/font_size = 24
+LeaderboardLabel/fonts/font = ExtResource("1_gxnlp")

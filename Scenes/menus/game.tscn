@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctbick08lhn73"]
+[gd_scene load_steps=5 format=3 uid="uid://ctbick08lhn73"]
 
-[ext_resource type="Script" path="res://Scripts/game.gd" id="1_350pf"]
-[ext_resource type="PackedScene" uid="uid://donfsgt53tkmx" path="res://Scenes/route_follower.tscn" id="3_45u4u"]
+[ext_resource type="PackedScene" uid="uid://donfsgt53tkmx" path="res://Scenes/car.tscn" id="3_45u4u"]
 [ext_resource type="PackedScene" uid="uid://xr0cftkymv3u" path="res://Scenes/qte/qte_area.tscn" id="3_t4xsm"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_7iiwr"]
@@ -14,7 +13,6 @@ _data = {
 point_count = 4
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_350pf")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(1735, 427)
@@ -59,4 +57,6 @@ curve = SubResource("Curve2D_reel6")
 
 [node name="RouteFollower" parent="RaceRoute" instance=ExtResource("3_45u4u")]
 unique_name_in_owner = true
+position = Vector2(100, 50)
+rotation = -1.5673
 max_speed = 200.0

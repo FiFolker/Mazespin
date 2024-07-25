@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Track" load_steps=3 format=3 uid="uid://c3km0i0ayn5rt"]
 
-[ext_resource type="Script" path="res://Resources/Tracks/track.gd" id="1_4c5mw"]
+[ext_resource type="Script" path="res://Resources/Tracks/track_data.gd" id="1_4c5mw"]
 [ext_resource type="PackedScene" uid="uid://ctbick08lhn73" path="res://Scenes/menus/game.tscn" id="1_vfe52"]
 
 [resource]

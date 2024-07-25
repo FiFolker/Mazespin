@@ -15,6 +15,8 @@ var qte:QTE
 #enum DIFFICULTY {EASY=10, MEDIUM=5, HARD=1}
 #@export var difficulty : DIFFICULTY = DIFFICULTY.EASY
 
+var qte_shown : bool = true
+
 var index_qte : int = 0
 
 func get_area_size() -> Vector2:
@@ -25,6 +27,8 @@ func get_area_size() -> Vector2:
 func generate_qte() -> void:
 	index_qte += 1
 	qte = QTE_SCENE.instantiate()
+	qte.qte_shown = qte_shown
+	print(qte_shown, " qte ", qte.qte_shown)
 	qte.qte_done.connect(_on_qte_done)
 	qte.qte_failure.connect(_on_qte_failure)
 	add_child(qte)

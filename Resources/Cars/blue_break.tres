@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Car" load_steps=4 format=3 uid="uid://bqafnjtffy4mc"]
 
-[ext_resource type="Script" path="res://Resources/Cars/cars.gd" id="1_v5jek"]
+[ext_resource type="Script" path="res://Resources/Cars/cars_data.gd" id="1_v5jek"]
 [ext_resource type="Texture2D" uid="uid://dpmsrxxvrj8y3" path="res://Assets/Sprites/Cars/car_blue_3.png" id="2_y5ite"]
 [ext_resource type="Texture2D" uid="uid://r0tdog1qktt3" path="res://Assets/Sprites/Cars/Small/car_blue_small_3.png" id="3_5m4cy"]
 

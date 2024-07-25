@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://donfsgt53tkmx"]
+
+[ext_resource type="Script" path="res://Scripts/Cars/car.gd" id="1_cop3c"]
+[ext_resource type="Script" path="res://Scripts/Cars/car_setup.gd" id="2_35gcx"]
+[ext_resource type="Script" path="res://Scripts/Driver/driver_player.gd" id="3_hq1vu"]
+[ext_resource type="PackedScene" uid="uid://dcti1q7n1f5br" path="res://Scenes/gui.tscn" id="3_vyi7i"]
+[ext_resource type="Script" path="res://Scripts/Driver/driver_ai.gd" id="5_a5oc3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bysr2"]
+size = Vector2(70, 131)
+
+[node name="Car" type="PathFollow2D"]
+loop = false
+script = ExtResource("1_cop3c")
+max_speed = 250.0
+
+[node name="CarArea" type="Area2D" parent="." node_paths=PackedStringArray("driver")]
+script = ExtResource("2_35gcx")
+driver = NodePath("../DriverPlayer")
+
+[node name="CarModel" type="Sprite2D" parent="CarArea"]
+unique_name_in_owner = true
+rotation = 1.5708
+
+[node name="CarCollider" type="CollisionShape2D" parent="CarArea"]
+unique_name_in_owner = true
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_bysr2")
+
+[node name="DriverPlayer" type="Node2D" parent="."]
+script = ExtResource("3_hq1vu")
+
+[node name="GUI" parent="DriverPlayer" node_paths=PackedStringArray("curr_driver") instance=ExtResource("3_vyi7i")]
+curr_driver = NodePath("..")
+
+[node name="Camera2D" type="Camera2D" parent="DriverPlayer" groups=["cameras"]]
+rotation = 1.5708
+scale = Vector2(1, 1)
+
+[node name="DriverAI" type="Node2D" parent="."]
+script = ExtResource("5_a5oc3")
+
+[connection signal="area_entered" from="CarArea" to="." method="_on_car_area_entered"]

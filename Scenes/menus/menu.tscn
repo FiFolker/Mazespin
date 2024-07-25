@@ -44,6 +44,11 @@ text = "SINGLEPLAYER"
 layout_mode = 2
 text = "MULTIPLAYER"
 
+[node name="Driver" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "DRIVER"
+
 [node name="Option" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "OPTIONS"
@@ -54,5 +59,6 @@ text = "QUIT"
 
 [connection signal="button_down" from="VBoxContainer/SinglePlayer" to="." method="_on_singleplayer_btn_button_down"]
 [connection signal="button_down" from="VBoxContainer/Multiplayer" to="." method="_on_multiplayer_button_down"]
+[connection signal="button_down" from="VBoxContainer/Driver" to="." method="_on_driver_button_down"]
 [connection signal="button_down" from="VBoxContainer/Option" to="." method="_on_option_btn_button_down"]
 [connection signal="button_down" from="VBoxContainer/Quit" to="." method="_on_quit_btn_button_down"]

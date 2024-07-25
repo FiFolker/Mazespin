@@ -1,12 +1,11 @@
-[gd_resource type="Resource" script_class="Car" load_steps=4 format=3 uid="uid://4euxdc287cp5"]
+[gd_resource type="Resource" script_class="CarData" load_steps=4 format=3 uid="uid://4euxdc287cp5"]
 
-[ext_resource type="Script" path="res://Resources/Cars/cars.gd" id="1_yeabr"]
+[ext_resource type="Script" path="res://Resources/Cars/cars_data.gd" id="1_yeabr"]
 [ext_resource type="Texture2D" uid="uid://bff8duur1844l" path="res://Assets/Sprites/Cars/car_black_1.png" id="2_6qlp8"]
-[ext_resource type="Texture2D" uid="uid://bdwgg4qemnnwp" path="res://Assets/Sprites/Cars/Small/car_black_small_1.png" id="3_2m6wn"]
+[ext_resource type="Texture2D" uid="uid://bb8yrl70os50k" path="res://Assets/Sprites/Cars/Small/car_black_small_1.png" id="3_2m6wn"]
 
 [resource]
 script = ExtResource("1_yeabr")
-name = ""
 category = 0
 paint = 0
 sprite_small = ExtResource("3_2m6wn")

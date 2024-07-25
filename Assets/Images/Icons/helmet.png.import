@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bb8yrl70os50k"
-path="res://.godot/imported/car_black_small_1.png-9caa27924cb05d01d2eb9479afdf7efa.ctex"
+uid="uid://c4s7j1vi346mk"
+path="res://.godot/imported/helmet.png-cf234f7f014d0213b0b73b15bde464a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Cars/Small/car_black_small_1.png"
-dest_files=["res://.godot/imported/car_black_small_1.png-9caa27924cb05d01d2eb9479afdf7efa.ctex"]
+source_file="res://Assets/Images/Icons/helmet.png"
+dest_files=["res://.godot/imported/helmet.png-cf234f7f014d0213b0b73b15bde464a0.ctex"]
 
 [params]
 
