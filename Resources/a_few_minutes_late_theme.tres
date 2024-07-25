@@ -34,4 +34,7 @@ CarButton/fonts/font = ExtResource("1_gxnlp")
 CarButton/styles/hover = SubResource("StyleBoxTexture_j187w")
 CarButton/styles/normal = SubResource("StyleBoxTexture_rfsc2")
 CarButton/styles/pressed = SubResource("StyleBoxTexture_aaw3s")
+CountdownLabel/base_type = &"Label"
+CountdownLabel/font_sizes/font_size = 186
+CountdownLabel/fonts/font = ExtResource("1_gxnlp")
 Label/fonts/font = ExtResource("1_gxnlp")

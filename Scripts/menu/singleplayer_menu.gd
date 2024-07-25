@@ -124,7 +124,7 @@ func _on_race_button_down() -> void:
 		info_dialog.dialog_text = "You didn't choose a car !"
 		info_dialog.show()
 		return
-	var race = Race.init(track, car, mode, true)
+	var race = Race.init(track, car, mode)
 	get_tree().change_scene_to_packed(track.scene) # i have to find a way to transfer data between the scenes
 
 #endregion

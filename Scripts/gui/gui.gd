@@ -1,28 +1,42 @@
 extends CanvasLayer
 
 @onready var timer_label = %TimerLabel
-
-var chrono : float = 0.0
+@export var chrono_precision : int = 1
+@onready var countdown_place = %Countdown
+@onready var countdown_label = %CountdownLabel
+var countdown : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	timer_label.text = array_to_min_and_sec_string(convert_sec_in_min(chrono))
-
+	countdown_place.visible = true
+	countdown = Race.countdown_timer.time_left
+	timer_label.text = chrono_to_string(chrono_precision)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta:float):
-	chrono += delta
-	timer_label.text = array_to_min_and_sec_string(convert_sec_in_min(chrono))
+	if Race.state == Race.State.RUNING:
+		timer_label.text = chrono_to_string(chrono_precision)
+		
+	if Race.countdown_timer.time_left > 0 and countdown_place.visible ==true:
+		
+		countdown = Race.countdown_timer.time_left - delta
+		if countdown != 0:
+			countdown_label.text = str(countdown)
+		else:
+			countdown_label.text = "START"
+			countdown_end()
 
-func convert_sec_in_min(sec:float)->Array[int]:
-	var time_converted : Array[int] = [0,0]
+func chrono_to_string(precision:int) -> String:
+	var min : int = int(Race.chrono/60)
+	var sec : float = float(Race.chrono - (min*60))
 	
-	time_converted[0] = int(sec/60)
-	time_converted[1] = int(sec - (time_converted[0]*60))
+	if min <= 0:
+		return str(sec).pad_decimals(precision)
 	
-	return time_converted
+	return str(min) + ":" + str(sec).pad_decimals(precision)
+	
 
-func array_to_min_and_sec_string(min_and_sec:Array[int])-> String:
-	if min_and_sec[0] <= 0:
-		return str(min_and_sec[1]) + "s"
-	return str(min_and_sec[0]) + "m " + str(min_and_sec[1]) + "s"
+func countdown_end() -> void:
+	await get_tree().create_timer(.5).timeout
+	countdown_place.visible = false
+	

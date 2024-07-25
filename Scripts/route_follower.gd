@@ -13,7 +13,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta:float):
-	self.progress += speed*delta
+	if Race.state == Race.State.RUNING:
+		self.progress += speed*delta
 
 func _on_player_area_entered(area):
 	if area is QTEArea:
