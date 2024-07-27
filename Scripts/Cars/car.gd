@@ -1,16 +1,30 @@
 extends PathFollow2D
 class_name Car
 
+@export var driver_ai_scene : PackedScene
+@export var driver_player_scene : PackedScene
+
 @export var max_speed:float = 100
 @onready var speed:float = max_speed :
 	set(value):
 		speed = clampf(value, 0, max_speed)
 
 var speed_change_ratio : float
+var driver : Driver
 
+func init(_driver:Driver):
+	print("new car")
+	var driver_scene : Driver
+	if _driver is DriverAI:
+		driver_scene = driver_ai_scene.instantiate() as Driver
+	if _driver is DriverPlayer:
+		driver_scene = driver_player_scene.instantiate() as Driver
+	driver_scene.init(_driver._driver_data)
+	add_child(driver_scene)
+	
 func _ready():
-	max_speed = Race.car.speed
-	speed = max_speed
+	#max_speed = Race.car.speed
+	#speed = max_speed
 	self.progress = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

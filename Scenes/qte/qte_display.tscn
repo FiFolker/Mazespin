@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://bvfxnyqtgg3ge"]
 
-[ext_resource type="Script" path="res://Scripts/qte/qte_display.gd" id="1_5d4bg"]
+[ext_resource type="Script" path="res://Scripts/QTE/qte_display.gd" id="1_5d4bg"]
 [ext_resource type="Texture2D" uid="uid://ddwxacsddmj7u" path="res://Assets/Flairs/flair_circle_8.png" id="2_7cobx"]
 [ext_resource type="Texture2D" uid="uid://dn62g80vynrho" path="res://Assets/VFX/Particles/circle_01.png" id="2_cldd7"]
 [ext_resource type="Texture2D" uid="uid://bdkknwr16xcoj" path="res://Assets/Sprites/Input/keyboard/keyboard_a.png" id="3_g4hpp"]

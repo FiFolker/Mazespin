@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://xao1kchwqpdj"]
 
-[ext_resource type="Script" path="res://Scripts/menu/main_menu.gd" id="1_ti3us"]
-[ext_resource type="Texture2D" uid="uid://dh7h0o16h2ke8" path="res://Assets/Images/Backgrounds/background.jpg" id="4_bi83i"]
+[ext_resource type="Script" path="res://Scripts/Menu/main_menu.gd" id="1_twdep"]
+[ext_resource type="Texture2D" uid="uid://dh7h0o16h2ke8" path="res://Assets/Images/Backgrounds/background.jpg" id="2_sv6e3"]
 
 [node name="MainMenu" type="CanvasLayer"]
-script = ExtResource("1_ti3us")
+script = ExtResource("1_twdep")
 
 [node name="Background" type="TextureRect" parent="."]
 anchors_preset = 8
@@ -18,7 +18,7 @@ offset_right = 1920.0
 offset_bottom = 1012.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_bi83i")
+texture = ExtResource("2_sv6e3")
 expand_mode = 2
 stretch_mode = 2
 

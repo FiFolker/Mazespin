@@ -1,12 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://dcti1q7n1f5br"]
 
-[ext_resource type="Script" path="res://Scripts/UI/gui.gd" id="1_ahblo"]
-[ext_resource type="PackedScene" uid="uid://w8621vujr85u" path="res://Scenes/UI/driver_template.tscn" id="2_6hsxg"]
+[ext_resource type="Script" path="res://Scripts/ui/gui.gd" id="1_hneo4"]
 [ext_resource type="Texture2D" uid="uid://6m2bw84f1mnl" path="res://Assets/Images/Icons/checkered_flag.png" id="2_e8w3h"]
+[ext_resource type="PackedScene" uid="uid://w8621vujr85u" path="res://Scenes/ui/driver_template.tscn" id="3_pb4o2"]
 
 [node name="GUI" type="CanvasLayer"]
-script = ExtResource("1_ahblo")
-driver_template = ExtResource("2_6hsxg")
+script = ExtResource("1_hneo4")
+driver_template = ExtResource("3_pb4o2")
 
 [node name="Timer" type="PanelContainer" parent="."]
 anchors_preset = 5

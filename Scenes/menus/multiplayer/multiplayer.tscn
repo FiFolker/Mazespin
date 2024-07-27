@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://xbp3orcw2qrw"]
 
-[ext_resource type="Script" path="res://Scripts/menu/multiplayer.gd" id="1_iesw6"]
+[ext_resource type="Script" path="res://Scripts/Menu/multiplayer.gd" id="1_iesw6"]
 [ext_resource type="Texture2D" uid="uid://dh7h0o16h2ke8" path="res://Assets/Images/Backgrounds/background.jpg" id="3_epaij"]
 [ext_resource type="Texture2D" uid="uid://iu2kokhhvd44" path="res://Assets/Images/Icons/home.png" id="4_fkw1d"]
 

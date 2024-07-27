@@ -1,13 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://dwfhbf731he3d"]
 
-[ext_resource type="Script" path="res://Scripts/menu/singleplayer_menu.gd" id="1_r8c4t"]
-[ext_resource type="Texture2D" uid="uid://dh7h0o16h2ke8" path="res://Assets/Images/Backgrounds/background.jpg" id="2_ls1jg"]
-[ext_resource type="Texture2D" uid="uid://iu2kokhhvd44" path="res://Assets/Images/Icons/home.png" id="3_2kpi0"]
-[ext_resource type="ButtonGroup" uid="uid://2siss306q4vs" path="res://Resources/ButtonGroups/mode_group.tres" id="4_gihp2"]
-[ext_resource type="Texture2D" uid="uid://6m2bw84f1mnl" path="res://Assets/Images/Icons/checkered_flag.png" id="11_ltrgk"]
+[ext_resource type="Script" path="res://Scripts/Menu/singleplayer_menu.gd" id="1_14pyq"]
+[ext_resource type="Texture2D" uid="uid://dh7h0o16h2ke8" path="res://Assets/Images/Backgrounds/background.jpg" id="2_hddsk"]
+[ext_resource type="ButtonGroup" uid="uid://2siss306q4vs" path="res://Resources/ButtonGroups/mode_group.tres" id="3_mp3og"]
+[ext_resource type="Texture2D" uid="uid://iu2kokhhvd44" path="res://Assets/Images/Icons/home.png" id="4_wbdbd"]
+[ext_resource type="Texture2D" uid="uid://6m2bw84f1mnl" path="res://Assets/Images/Icons/checkered_flag.png" id="5_e6g6p"]
 
 [node name="Singleplayer" type="CanvasLayer"]
-script = ExtResource("1_r8c4t")
+script = ExtResource("1_14pyq")
 
 [node name="Background" type="TextureRect" parent="."]
 anchors_preset = 8
@@ -21,7 +21,7 @@ offset_right = 1920.0
 offset_bottom = 1012.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_ls1jg")
+texture = ExtResource("2_hddsk")
 expand_mode = 2
 stretch_mode = 2
 
@@ -59,14 +59,14 @@ custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 toggle_mode = true
 button_pressed = true
-button_group = ExtResource("4_gihp2")
+button_group = ExtResource("3_mp3og")
 text = "Chrono"
 
 [node name="AI" type="Button" parent="MarginContainer/VBoxContainer/Selection/Mode"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 toggle_mode = true
-button_group = ExtResource("4_gihp2")
+button_group = ExtResource("3_mp3og")
 text = "AI"
 
 [node name="Track" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Selection"]
@@ -115,7 +115,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 focus_neighbor_right = NodePath("../Difficulty")
-icon = ExtResource("3_2kpi0")
+icon = ExtResource("4_wbdbd")
 
 [node name="Space" type="Control" parent="MarginContainer/VBoxContainer/Confirmation"]
 layout_mode = 2
@@ -131,7 +131,7 @@ focus_neighbor_left = NodePath("../Menu")
 [node name="Race" type="Button" parent="MarginContainer/VBoxContainer/Confirmation"]
 layout_mode = 2
 size_flags_horizontal = 8
-icon = ExtResource("11_ltrgk")
+icon = ExtResource("5_e6g6p")
 icon_alignment = 2
 
 [node name="InfoDialog" type="AcceptDialog" parent="."]

@@ -37,7 +37,7 @@ func init_translation() -> void:
 			
 
 func _on_menu_btn_button_down():
-	get_tree().change_scene_to_file(GameManager.scenes["menu"])
+	SceneManager.goto_scene_menu("menu")
 
 
 func _on_input_choice_item_selected(index):

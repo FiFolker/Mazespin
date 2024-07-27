@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ctbick08lhn73"]
 
-[ext_resource type="PackedScene" uid="uid://donfsgt53tkmx" path="res://Scenes/car.tscn" id="3_45u4u"]
-[ext_resource type="PackedScene" uid="uid://xr0cftkymv3u" path="res://Scenes/qte/qte_area.tscn" id="3_t4xsm"]
+[ext_resource type="PackedScene" uid="uid://xr0cftkymv3u" path="res://Scenes/QTE/qte_area.tscn" id="1_efh4w"]
+[ext_resource type="PackedScene" uid="uid://donfsgt53tkmx" path="res://Scenes/car.tscn" id="2_b1rdr"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_7iiwr"]
 
@@ -36,17 +36,17 @@ position = Vector2(867, -80.75)
 scale = Vector2(83.0001, 902.5)
 mesh = SubResource("BoxMesh_7iiwr")
 
-[node name="QTEArea" parent="Level" instance=ExtResource("3_t4xsm")]
+[node name="QTEArea" parent="Level" instance=ExtResource("1_efh4w")]
 position = Vector2(867, 40)
 scale = Vector2(2.89, 2.89)
 number_of_qte = 2
 
-[node name="QTEArea2" parent="Level" instance=ExtResource("3_t4xsm")]
+[node name="QTEArea2" parent="Level" instance=ExtResource("1_efh4w")]
 position = Vector2(867, -529)
 scale = Vector2(2.89, 2.89)
 number_of_qte = 5
 
-[node name="QTEArea3" parent="Level" instance=ExtResource("3_t4xsm")]
+[node name="QTEArea3" parent="Level" instance=ExtResource("1_efh4w")]
 position = Vector2(651, 406)
 scale = Vector2(2.89, 2.89)
 number_of_qte = 15
@@ -55,7 +55,7 @@ number_of_qte = 15
 position = Vector2(544, 647)
 curve = SubResource("Curve2D_reel6")
 
-[node name="RouteFollower" parent="RaceRoute" instance=ExtResource("3_45u4u")]
+[node name="Car" parent="RaceRoute" instance=ExtResource("2_b1rdr")]
 unique_name_in_owner = true
 position = Vector2(100, 50)
 rotation = -1.5673

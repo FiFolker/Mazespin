@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ctn2r7kyvl7kh"]
 
-[ext_resource type="Script" path="res://Scripts/menu/end_menu.gd" id="1_3uvhg"]
+[ext_resource type="Script" path="res://Scripts/Menu/end_menu.gd" id="1_3uvhg"]
 [ext_resource type="Texture2D" uid="uid://dh7h0o16h2ke8" path="res://Assets/Images/Backgrounds/background.jpg" id="2_itwpj"]
 
 [node name="WinMenu" type="CanvasLayer" node_paths=PackedStringArray("default_button_to_grab")]

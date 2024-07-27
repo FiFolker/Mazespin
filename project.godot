@@ -11,16 +11,17 @@ config_version=5
 [application]
 
 config/name="Mazespin"
-run/main_scene="res://Scenes/menus/menu.tscn"
+run/main_scene="res://Scenes/Menus/menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://Assets/Images/Icons/Mazespin.png"
 
 [autoload]
 
 OptionsValues="*res://Scripts/Autoload/options_values.gd"
-GameManager="*res://Scripts/Autoload/game_manager.gd"
+SceneManager="*res://Scripts/Autoload/scene_manager.gd"
 Race="*res://Scripts/Autoload/race.gd"
-DriverManager="*res://Scripts/Autoload/driver_manager.gd"
+CurrentDriver="*res://Scripts/Autoload/current_driver.gd"
+Data="*res://Scripts/Autoload/data.gd"
 
 [debug]
 

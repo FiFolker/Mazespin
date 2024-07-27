@@ -10,4 +10,4 @@ func _ready():
 
 
 func _on_menu_button_down():
-	get_tree().change_scene_to_file(GameManager.scenes["menu"])
+	get_tree().change_scene_to_file(SceneManager.scenes["menu"])

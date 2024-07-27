@@ -7,8 +7,8 @@ func _ready():
 		default_button_to_grab.grab_focus()
 
 func _on_menu_btn_button_down():
-	get_tree().change_scene_to_file(GameManager.scenes["menu"])
+	SceneManager.goto_scene_menu("menu")
 
 
 func _on_replay_btn_button_down():
-	get_tree().change_scene_to_file(GameManager.scenes["game"])
+	SceneManager.goto_scene_packed(Race.track.scene)

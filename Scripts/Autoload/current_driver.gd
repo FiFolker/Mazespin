@@ -1,8 +1,10 @@
 extends Node
 
-# somes stats with files and name to choose here and it'll be in autoload way
+var driver : DriverPlayer
 
-var driver_name : String
+# somes stats with files and name to choose here and it'll be in autoload way
+func _ready():
+	driver = DriverPlayer.new(DriverData.new("FiFolker", null, -1))
 
 # FOR STATS
 var best_rank : int

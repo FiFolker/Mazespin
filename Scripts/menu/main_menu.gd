@@ -7,11 +7,12 @@ func _ready():
 		play_btn.grab_focus()
 
 func _on_singleplayer_btn_button_down():
-	GameManager.scene_changed.emit(get_tree().current_scene.scene_file_path)
-	get_tree().change_scene_to_file(GameManager.scenes["singleplayer"])
+	#SceneManager.scene_changed.emit(get_tree().current_scene.scene_file_path)
+	#get_tree().change_scene_to_file(SceneManager.scenes["singleplayer"])
+	SceneManager.goto_scene_menu("singleplayer")
 
 func _on_option_btn_button_down():
-	get_tree().change_scene_to_file(GameManager.scenes["options"])
+	SceneManager.goto_scene_menu("options")
 
 
 func _on_quit_btn_button_down():
@@ -20,7 +21,7 @@ func _on_quit_btn_button_down():
 
 func _on_multiplayer_button_down():
 	wip_dialog()
-	#get_tree().change_scene_to_file(GameManager.scenes["multiplayer"])
+	#SceneManager.goto_scene_menu("multiplayer")
 
 
 func _on_driver_button_down():

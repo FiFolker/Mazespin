@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c4nidbejx6eu3"]
 
-[ext_resource type="Script" path="res://Scripts/qte/qte.gd" id="1_q4jav"]
-[ext_resource type="PackedScene" uid="uid://bvfxnyqtgg3ge" path="res://Scenes/qte/qte_display.tscn" id="2_sqgsw"]
+[ext_resource type="Script" path="res://Scripts/QTE/qte.gd" id="1_q4jav"]
+[ext_resource type="PackedScene" uid="uid://bvfxnyqtgg3ge" path="res://Scenes/QTE/qte_display.tscn" id="2_sqgsw"]
 
 [node name="QTE" type="Node"]
 script = ExtResource("1_q4jav")
