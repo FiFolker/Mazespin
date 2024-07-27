@@ -16,9 +16,9 @@ func init(_driver:Driver):
 	print("new car")
 	var driver_scene : Driver
 	if _driver is DriverAI:
-		driver_scene = driver_ai_scene.instantiate() as Driver
+		driver_scene = driver_ai_scene.instantiate() as DriverAI
 	if _driver is DriverPlayer:
-		driver_scene = driver_player_scene.instantiate() as Driver
+		driver_scene = driver_player_scene.instantiate() as DriverPlayer
 	driver_scene.init(_driver._driver_data)
 	add_child(driver_scene)
 	
