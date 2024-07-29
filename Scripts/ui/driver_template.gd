@@ -18,14 +18,17 @@ func load_data(new_driver:Driver) -> void:
 	driver = new_driver
 	ranking_label.text = str(driver.ranking)
 	car_icon.texture = driver.car_data.sprite_small if driver.car_data != null else null
-	driver_name.text = driver.driver_name
+	driver_name.text = driver.driver_name.substr(0, 3).to_upper()
 	chrono.text = Race.chrono_to_string(driver.chrono, Race.chrono_precision)
 	if driver == CurrentDriver:
 		bg.color = highlight_color
 	
 func _process(delta:float):
-	chrono.text = Race.chrono_to_string(driver.chrono, Race.chrono_precision)
-
+	if driver.ranking != 1:
+		var difference = 0.0 #to do calculate diff
+		chrono.text = Race.chrono_to_string(driver.chrono, Race.chrono_precision)
+	else:
+		chrono.text = Race.chrono_to_string(driver.chrono, Race.chrono_precision)
 func update_rank()-> void:
 	ranking_label.text = str(driver.ranking)
 

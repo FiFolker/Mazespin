@@ -4,7 +4,8 @@ var driver : DriverPlayer
 
 # somes stats with files and name to choose here and it'll be in autoload way
 func _ready():
-	driver = DriverPlayer.new(DriverData.new("FiFolker", null, -1))
+	driver = DriverPlayer.new()
+	driver.setup(DriverData.new("FiFolker", null, -1))
 
 # FOR STATS
 var best_rank : int

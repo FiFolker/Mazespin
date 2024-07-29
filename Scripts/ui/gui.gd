@@ -16,10 +16,10 @@ var countdown : int
 func _ready():
 	#countdown
 	countdown_place.visible = true
-	countdown = int(Race.countdown_timer.time_left)
+	countdown = Race.countdown
 	Race.lap_finished.connect(on_lap_finished)
 	
-	chrono_label.text = Race.chrono_to_string(CurrentDriver.chrono, chrono_precision)
+	chrono_label.text = Race.chrono_to_string(CurrentDriver.driver.chrono, chrono_precision)
 	
 	init_drivers()
 	
@@ -33,7 +33,7 @@ func init_drivers() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta:float):
-	chrono_label.text = Race.chrono_to_string(CurrentDriver.chrono, chrono_precision)
+	chrono_label.text = Race.chrono_to_string(CurrentDriver.driver.chrono, chrono_precision)
 		
 	if Race.countdown_timer.time_left > 0 and countdown_place.visible ==true:
 		

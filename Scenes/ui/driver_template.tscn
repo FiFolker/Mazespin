@@ -19,6 +19,7 @@ color = Color(0.676946, 0.580092, 0.998468, 0.478431)
 
 [node name="DriverTemplate" type="HBoxContainer" parent="."]
 layout_mode = 2
+alignment = 1
 
 [node name="RankingLabel" type="Label" parent="DriverTemplate"]
 unique_name_in_owner = true

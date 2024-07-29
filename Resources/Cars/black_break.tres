@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Car" load_steps=4 format=3 uid="uid://dfks5hjkbtw4a"]
+[gd_resource type="Resource" script_class="CarData" load_steps=4 format=3 uid="uid://dfks5hjkbtw4a"]
 
 [ext_resource type="Script" path="res://Resources/Cars/cars_data.gd" id="1_7v2lm"]
 [ext_resource type="Texture2D" uid="uid://c5y8stpku8ei" path="res://Assets/Sprites/Cars/car_black_3.png" id="2_evlhe"]

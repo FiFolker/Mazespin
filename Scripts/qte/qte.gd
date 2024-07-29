@@ -60,7 +60,7 @@ func generate_qte() -> void:
 func qte_display(key_text:String, timer_reference:Timer) -> void:
 	qte_info = QTE_DISPLAY.instantiate()
 	qte_info.setup(key_text, timer_reference)
-	get_tree().current_scene.add_child(qte_info)
+	SceneManager.current_scene.add_child(qte_info)
 
 func clear_qte() -> void:
 	qte_timer.stop()

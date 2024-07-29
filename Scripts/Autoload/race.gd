@@ -20,20 +20,24 @@ var number_driver : int
 var leaderboard : Array[Driver] # need to define driver type or a way to save driver info
 var general_lap : int
 var countdown_timer : SceneTreeTimer
+var countdown : float = 3.5
 
 func _ready():
 	SceneManager.scene_changing_ended.connect(_on_scene_changing_ended)
+	
 
 func _on_scene_changing_ended():
 	if track != null:
 		print(SceneManager.current_scene.scene_file_path, " = ", track.scene.resource_path)
 		if SceneManager.current_scene.scene_file_path == track.scene.resource_path:
 			init_cars()
-			start_countdown(3.5)
+			start_countdown(countdown)
 
 func singleplayer(_track:TrackData, _mode:MODE) -> void:
+	leaderboard.clear()
 	leaderboard.append(CurrentDriver.driver)
 	CurrentDriver.driver.ranking = leaderboard.size()
+	CurrentDriver.driver.chrono = 0
 	init(_track, _mode)
 
 func init(_track:TrackData, _mode:MODE):
@@ -41,7 +45,7 @@ func init(_track:TrackData, _mode:MODE):
 	mode = _mode
 	general_lap = 0
 	max_laps = 1
-	number_driver = 20
+	number_driver = 0 if mode == MODE.CHRONO else 20
 	state = State.WAITING
 	init_drivers()
 	SceneManager.goto_scene_packed(track.scene)
@@ -49,7 +53,9 @@ func init(_track:TrackData, _mode:MODE):
 func init_drivers() -> void:
 	for i in number_driver:
 		if i > leaderboard.size():
-			var driver : DriverAI = DriverAI.new(DriverData.new("test"+str(i), null, i+1))
+			var driver_data : DriverData = DriverData.new("test"+str(i), null, i+1)
+			var driver : DriverAI = DriverAI.new()
+			driver.setup(driver_data)
 			leaderboard.append(driver)
 	
 func init_cars() -> void:
@@ -57,6 +63,7 @@ func init_cars() -> void:
 	if race_route != null:
 		for driver in leaderboard:
 			var new_car = car_scene.instantiate() as Car
+			new_car.name = driver.driver_name + str(driver.ranking)
 			new_car.init(driver)
 			race_route.add_child(new_car)
 

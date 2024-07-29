@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 class_name Driver
 
 var _driver_data : DriverData
@@ -23,18 +23,13 @@ var ranking : int :
 	get:
 		return _driver_data.ranking
 
-func _init(driver_data:DriverData):
+func _ready():
+	if _driver_data == null:
+		push_error(self, " driver not initialized")
+
+func setup(driver_data:DriverData):
 	self._driver_data = driver_data
 
-func init(driver_data:DriverData):
-	self._driver_data = driver_data
-
-#func _init(_name:String, _car_data:CarData, _ranking:int, _chrono:float = 0.0):
-	#driver_name = _name
-	#car_data = _car_data
-	#chrono = _chrono
-	#ranking = _ranking
-	
 func _process(delta:float):
 	if Race.state == Race.State.RUNING:
-		_driver_data.chrono += delta
+		chrono += delta

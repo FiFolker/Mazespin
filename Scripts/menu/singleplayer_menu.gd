@@ -73,11 +73,9 @@ func _on_difficulty_item_selected(index) -> void:
 
 func _on_chrono_button_down() -> void:
 	mode = Race.MODE.CHRONO
-	print("changed mode to chrono")
 
 func _on_ai_button_down() -> void:
 	mode = Race.MODE.AI
-	print("changed mode to ai")
 
 func track_selected(selected_track:TrackData) -> void:
 	if Data.track_list.find(selected_track) != -1:
