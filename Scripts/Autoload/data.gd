@@ -5,6 +5,19 @@ var track_path : String = "res://Resources/Tracks/"
 
 var car_list : Array[CarData]
 var track_list : Array[TrackData]
+const random_name : Array[String] = [
+	"Hamilton",
+	"Verstappen",
+	"Alonso",
+	"Schumacher",
+	"Stroll",
+	"Ocon",
+	"Leclerc",
+	"Gasly",
+	"Norris",
+	"Piastry",
+	"Tsunoda"
+]
 
 func _ready():
 	fill_car_list(get_resources(cars_path))

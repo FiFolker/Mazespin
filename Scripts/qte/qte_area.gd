@@ -15,7 +15,7 @@ var qte:QTE
 #enum DIFFICULTY {EASY=10, MEDIUM=5, HARD=1}
 #@export var difficulty : DIFFICULTY = DIFFICULTY.EASY
 
-var qte_shown : bool = true
+var _qte_shown : bool = true
 
 var index_qte : int = 0
 
@@ -24,18 +24,22 @@ func get_area_size() -> Vector2:
 		return Vector2.ZERO
 	return $CollisionShape2D.shape.size * self.scale
 
-func generate_qte() -> void:
+func start_qte(displayable:bool) -> void:
 	index_qte += 1
+	_qte_shown = displayable
 	qte = QTE_SCENE.instantiate()
-	qte.qte_shown = qte_shown
-	print(qte_shown, " qte ", qte.qte_shown)
 	qte.qte_done.connect(_on_qte_done)
 	qte.qte_failure.connect(_on_qte_failure)
 	add_child(qte)
+	if qte.is_node_ready():
+		qte.generate_qte(_qte_shown)
+
+func start_qte_ai() -> void:
+	pass # to do
 
 func _on_qte_done() -> void:
 	if index_qte < number_of_qte:
-		generate_qte()
+		start_qte(_qte_shown)
 	else:
 		qte_sequence_success.emit()
 
@@ -43,5 +47,6 @@ func _on_qte_failure() -> void:
 	qte_sequence_failure.emit()
 
 func _on_area_entered(area):
-	generate_qte()
+	#start_qte()
+	pass
 

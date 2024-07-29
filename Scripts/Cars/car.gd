@@ -5,6 +5,7 @@ class_name Car
 @export var driver_player_scene : PackedScene = preload("res://Scenes/Drivers/driver_player.tscn")
 
 @onready var car_area = $CarArea
+@onready var driver_name = %DriverName
 
 @export var max_speed:float = 100
 @onready var speed:float = max_speed :
@@ -30,6 +31,7 @@ func _ready():
 	#max_speed = Race.car.speed
 	#speed = max_speed
 	self.progress = 0
+	driver_name.text = driver.driver_name
 	car_area.load_car(driver.car_data)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -40,9 +42,15 @@ func _process(delta:float):
 		Race.lap_finished.emit()
 	
 
-func _on_car_area_entered(area):
+func _on_car_area_entered(area:Area2D):
 	if area is QTEArea:
 		var qte_sequence : QTEArea = area
+		
+		if driver is DriverAI :
+			qte_sequence.start_qte(false)
+			driver.solve_qte(qte_sequence)
+		else:
+			qte_sequence.start_qte(true)
 		
 		var time_before_crossing_area : float= qte_sequence.number_of_qte * OptionsValues.difficulty
 		var area_size:Vector2 = qte_sequence.get_area_size()

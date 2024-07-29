@@ -13,8 +13,6 @@ var qte_info : QTEDisplay
 
 var key_released : bool = true
 
-var qte_shown : bool = true
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# define qte action name
@@ -26,7 +24,6 @@ func _ready():
 	# clear the input map to be sure than there is no key assigned
 	InputMap.action_erase_events("current_qte")
 	
-	generate_qte()
 
 func _input(event:InputEvent) -> void:	
 	if event.is_action_pressed("current_qte") and key_released:
@@ -46,14 +43,14 @@ func _input(event:InputEvent) -> void:
 		key_released = true
 
 #region QTE logic
-func generate_qte() -> void:
+func generate_qte(displayable:bool) -> void:
 	var key : InputEvent = get_random_key_from_pool()
 	var key_txt = key.as_text()
 	if key is InputEventJoypadButton:
 		key_txt = str(key.button_index)
 	
 	InputMap.action_add_event("current_qte", key)
-	if qte_shown:
+	if displayable:
 		qte_display(key_txt, qte_timer)
 	qte_timer.start()
 
@@ -80,8 +77,10 @@ func get_random_key_from_pool() -> InputEvent:
 
 
 func _on_qte_done():
-	qte_info.success_animation()
+	if qte_info != null:
+		qte_info.success_animation()
 
 
 func _on_qte_failure():
+	if qte_info != null:	
 		qte_info.error_animation()

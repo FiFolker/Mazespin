@@ -53,7 +53,8 @@ func init(_track:TrackData, _mode:MODE):
 func init_drivers() -> void:
 	for i in number_driver:
 		if i > leaderboard.size():
-			var driver_data : DriverData = DriverData.new("test"+str(i), null, i+1)
+			var random_car = Data.car_list.pick_random()
+			var driver_data : DriverData = DriverData.new(Data.random_name.pick_random() + str(i), random_car, i+1)
 			var driver : DriverAI = DriverAI.new()
 			driver.setup(driver_data)
 			leaderboard.append(driver)

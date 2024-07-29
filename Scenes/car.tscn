@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/Cars/car_setup.gd" id="2_35gcx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bysr2"]
-size = Vector2(70, 131)
+size = Vector2(131, 70)
 
 [node name="Car" type="PathFollow2D"]
 script = ExtResource("1_cop3c")
@@ -21,5 +21,19 @@ rotation = 1.5708
 unique_name_in_owner = true
 position = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_bysr2")
+
+[node name="DriverNameBG" type="PanelContainer" parent="."]
+visible = false
+offset_left = 96.0
+offset_top = -39.0
+offset_right = 176.0
+offset_bottom = -14.0
+rotation = 1.5708
+
+[node name="DriverName" type="Label" parent="DriverNameBG"]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="area_entered" from="CarArea" to="." method="_on_car_area_entered"]

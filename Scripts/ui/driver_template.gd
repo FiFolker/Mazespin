@@ -18,7 +18,7 @@ func load_data(new_driver:Driver) -> void:
 	driver = new_driver
 	ranking_label.text = str(driver.ranking)
 	car_icon.texture = driver.car_data.sprite_small if driver.car_data != null else null
-	driver_name.text = driver.driver_name.substr(0, 3).to_upper()
+	driver_name.text = driver.short_name()
 	chrono.text = Race.chrono_to_string(driver.chrono, Race.chrono_precision)
 	if driver == CurrentDriver:
 		bg.color = highlight_color
