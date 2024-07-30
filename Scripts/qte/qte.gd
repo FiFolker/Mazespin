@@ -6,23 +6,28 @@ signal qte_failure
 
 @export var QTE_DISPLAY : PackedScene
 
-@onready var qte_timer = $QTETimer
+@onready var qte_timer = %QTETimer
 
 var action_name : String
 var qte_info : QTEDisplay
 
 var key_released : bool = true
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
+func setup() -> void:
 	# define qte action name
 	action_name = "qte_" + OptionsValues.get_input_as_string().to_lower() 
 	
 	#define timer in function of the difficulty (i have to think deeply about the difficulty)
 	qte_timer.wait_time = OptionsValues.difficulty
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	setup()
 	
 	# clear the input map to be sure than there is no key assigned
 	InputMap.action_erase_events("current_qte")
+	
+	generate_qte()
 	
 
 func _input(event:InputEvent) -> void:	
@@ -43,15 +48,14 @@ func _input(event:InputEvent) -> void:
 		key_released = true
 
 #region QTE logic
-func generate_qte(displayable:bool) -> void:
+func generate_qte() -> void:
 	var key : InputEvent = get_random_key_from_pool()
 	var key_txt = key.as_text()
 	if key is InputEventJoypadButton:
 		key_txt = str(key.button_index)
 	
 	InputMap.action_add_event("current_qte", key)
-	if displayable:
-		qte_display(key_txt, qte_timer)
+	qte_display(key_txt, qte_timer)
 	qte_timer.start()
 
 func qte_display(key_text:String, timer_reference:Timer) -> void:

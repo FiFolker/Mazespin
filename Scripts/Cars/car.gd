@@ -14,23 +14,26 @@ class_name Car
 
 var speed_change_ratio : float
 var driver : Driver
+var index_qte : int = 0
 
 func init(_driver:Driver):
-	var driver_scene : Driver
 	if _driver is DriverAI:
 		driver = _driver as DriverAI
-		driver_scene = driver_ai_scene.instantiate() as DriverAI
 	if _driver is DriverPlayer:
 		driver = _driver as DriverPlayer
-		driver_scene = driver_player_scene.instantiate() as DriverPlayer
-	driver_scene.setup(_driver._driver_data)
-	add_child(driver_scene)
 	
 
 func _ready():
 	#max_speed = Race.car.speed
 	#speed = max_speed
 	self.progress = 0
+	var driver_scene : Driver
+	if driver is DriverAI:
+		driver_scene = driver_ai_scene.instantiate() as DriverAI
+	if driver is DriverPlayer:
+		driver_scene = driver_player_scene.instantiate() as DriverPlayer
+	driver_scene.setup(driver._driver_data)
+	add_child(driver_scene)
 	driver_name.text = driver.driver_name
 	car_area.load_car(driver.car_data)
 
@@ -44,13 +47,9 @@ func _process(delta:float):
 
 func _on_car_area_entered(area:Area2D):
 	if area is QTEArea:
+		index_qte = 0
 		var qte_sequence : QTEArea = area
 		
-		if driver is DriverAI :
-			qte_sequence.start_qte(false)
-			driver.solve_qte(qte_sequence)
-		else:
-			qte_sequence.start_qte(true)
 		
 		var time_before_crossing_area : float= qte_sequence.number_of_qte * OptionsValues.difficulty
 		var area_size:Vector2 = qte_sequence.get_area_size()
@@ -64,11 +63,11 @@ func _on_car_area_entered(area:Area2D):
 		qte_sequence.qte_sequence_failure.connect(qte_sequence_failure)
 
 func qte_sequence_success() -> void:
-	print("success NICE")
+	print("QTE success")
 	speed *= speed_change_ratio
 
 func qte_sequence_failure() -> void:
-	print("fail ...")
+	print("QTE failed")
 	speed *= speed_change_ratio
 
 

@@ -2,6 +2,7 @@ extends Node2D
 class_name Driver
 
 var _driver_data : DriverData
+# getter and setter to access to driver data without have to do driver.driver_data.driver_name ... boring
 var driver_name : String :
 	set(value):
 		_driver_data.driver_name = value
@@ -22,13 +23,23 @@ var ranking : int :
 		_driver_data.ranking = value
 	get:
 		return _driver_data.ranking
-var car : Car
+var current_lap : int : 
+	set(value):
+		_driver_data.current_lap = value
+	get:
+		return _driver_data.current_lap
+var car : Car : 
+	set(value):
+		_driver_data.car = value
+	get:
+		return _driver_data.car
+		
 
 func _ready():
 	if _driver_data == null:
 		push_error(self, " driver not initialized")
 	car = get_parent() #get path follow 2d which is the car
-
+	print(car)
 
 func setup(driver_data:DriverData):
 	self._driver_data = driver_data

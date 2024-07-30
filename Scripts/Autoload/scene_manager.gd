@@ -19,7 +19,6 @@ func _ready():
 	has_won.connect(win)
 	has_lost.connect(lose)
 	is_ended.connect(end)
-	print(get_tree().current_scene)
 	current_scene = get_tree().current_scene
 
 func setup_scenes(path:String, debug:bool):
@@ -49,7 +48,7 @@ func end() -> void:
 
 func on_scene_changing(old_scene_path:String) -> void:
 	previous_scene = old_scene_path
-	print(previous_scene)
+	print("previous scene : ", previous_scene)
 
 func goto_scene_menu(_name:String):
 	if _name not in scenes:

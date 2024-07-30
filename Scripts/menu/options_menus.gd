@@ -42,7 +42,6 @@ func _on_menu_btn_button_down():
 
 func _on_input_choice_item_selected(index):
 	OptionsValues.input = OptionsValues.INPUT[input_choice.get_item_text(index)]
-	print(OptionsValues.input)
 
 
 func _on_language_item_selected(index):

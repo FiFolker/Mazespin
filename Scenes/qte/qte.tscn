@@ -8,6 +8,7 @@ script = ExtResource("1_q4jav")
 QTE_DISPLAY = ExtResource("2_sqgsw")
 
 [node name="QTETimer" type="Timer" parent="."]
+unique_name_in_owner = true
 wait_time = 5.0
 
 [connection signal="qte_done" from="." to="." method="_on_qte_done"]

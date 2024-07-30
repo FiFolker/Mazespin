@@ -24,11 +24,14 @@ func load_data(new_driver:Driver) -> void:
 		bg.color = highlight_color
 	
 func _process(delta:float):
-	if driver.ranking != 1:
-		var difference = 0.0 #to do calculate diff
-		chrono.text = Race.chrono_to_string(driver.chrono, Race.chrono_precision)
-	else:
-		chrono.text = Race.chrono_to_string(driver.chrono, Race.chrono_precision)
+	
+	if Race.state == Race.State.RUNING:
+		if driver.ranking != 1:
+			var difference = (driver.car.progress_ratio + (driver.current_lap - Race.leaderboard[0].current_lap )) * Race.leaderboard[0].chrono
+			chrono.text = "+" + Race.chrono_to_string(difference, Race.chrono_precision)
+		else:
+			chrono.text = Race.chrono_to_string(driver.chrono, Race.chrono_precision)
+			
 func update_rank()-> void:
 	ranking_label.text = str(driver.ranking)
 

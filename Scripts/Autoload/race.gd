@@ -28,7 +28,6 @@ func _ready():
 
 func _on_scene_changing_ended():
 	if track != null:
-		print(SceneManager.current_scene.scene_file_path, " = ", track.scene.resource_path)
 		if SceneManager.current_scene.scene_file_path == track.scene.resource_path:
 			init_cars()
 			start_countdown(countdown)

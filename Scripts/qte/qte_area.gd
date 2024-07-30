@@ -4,7 +4,8 @@ class_name QTEArea
 signal qte_sequence_success
 signal qte_sequence_failure
 
-@export var QTE_SCENE : PackedScene 
+@export var QTE_PLAYER_SCENE : PackedScene 
+@export var QTE_AI_SCENE : PackedScene 
 var qte:QTE
 
 @export var number_of_qte:int
@@ -15,31 +16,37 @@ var qte:QTE
 #enum DIFFICULTY {EASY=10, MEDIUM=5, HARD=1}
 #@export var difficulty : DIFFICULTY = DIFFICULTY.EASY
 
-var _qte_shown : bool = true
+var car : Car
 
-var index_qte : int = 0
+var is_player :bool
 
 func get_area_size() -> Vector2:
 	if !($CollisionShape2D.shape is RectangleShape2D):
 		return Vector2.ZERO
 	return $CollisionShape2D.shape.size * self.scale
 
-func start_qte(displayable:bool) -> void:
-	index_qte += 1
-	_qte_shown = displayable
-	qte = QTE_SCENE.instantiate()
+func start_qte() -> void:
+	is_player = true
+	car.index_qte += 1
+	qte = QTE_PLAYER_SCENE.instantiate() as QTE
 	qte.qte_done.connect(_on_qte_done)
 	qte.qte_failure.connect(_on_qte_failure)
 	add_child(qte)
-	if qte.is_node_ready():
-		qte.generate_qte(_qte_shown)
 
 func start_qte_ai() -> void:
-	pass # to do
+	is_player = false
+	car.index_qte += 1
+	qte = QTE_AI_SCENE.instantiate() as QTEAI
+	qte.qte_done.connect(_on_qte_done)
+	qte.qte_failure.connect(_on_qte_failure)
+	add_child(qte)
 
 func _on_qte_done() -> void:
-	if index_qte < number_of_qte:
-		start_qte(_qte_shown)
+	if car.index_qte < number_of_qte:
+		if is_player:
+			start_qte()
+		else:
+			start_qte_ai()
 	else:
 		qte_sequence_success.emit()
 
@@ -47,6 +54,11 @@ func _on_qte_failure() -> void:
 	qte_sequence_failure.emit()
 
 func _on_area_entered(area):
-	#start_qte()
-	pass
+	if area.get_parent() is Car:
+		car = area.get_parent() as Car
+		if area.get_parent().driver is DriverAI:
+			start_qte_ai()
+		elif area.get_parent().driver is DriverPlayer:
+			start_qte()
+			
 
