@@ -47,18 +47,19 @@ func _on_scene_changing_ended():
 			init_cars()
 			start_countdown(countdown)
 
-func singleplayer(_track:TrackData, _mode:MODE) -> void:
+func singleplayer(_track:TrackData, _mode:MODE, _car:CarData, _laps_number:int, _ai_number:int) -> void:
 	leaderboard.clear()
 	leaderboard.append(CurrentDriver.driver)
+	CurrentDriver.driver.car_data = _car
 	CurrentDriver.driver.ranking = leaderboard.size()
-	init(_track, _mode)
+	init(_track, _mode, _laps_number, _ai_number)
 
-func init(_track:TrackData, _mode:MODE):
+func init(_track:TrackData, _mode:MODE, _laps_number:int, _ai_number:int):
 	track = _track
 	mode = _mode
 	general_lap = 0
-	max_laps = 2
-	number_driver = 0 if mode == MODE.CHRONO else 2
+	max_laps = _laps_number
+	number_driver = 0 if mode == MODE.CHRONO else _ai_number
 	state = State.WAITING
 	wait_last_drivers = false
 	init_drivers()

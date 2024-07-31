@@ -114,19 +114,65 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
-focus_neighbor_right = NodePath("../Difficulty")
+focus_neighbor_right = NodePath("../HBoxContainer3/Difficulty")
 icon = ExtResource("4_wbdbd")
 
 [node name="Space" type="Control" parent="MarginContainer/VBoxContainer/Confirmation"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Difficulty" type="OptionButton" parent="MarginContainer/VBoxContainer/Confirmation"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Confirmation"]
+layout_mode = 2
+
+[node name="AILabel" type="Label" parent="MarginContainer/VBoxContainer/Confirmation/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_type_variation = &"BigLabel"
+text = "AI"
+vertical_alignment = 1
+
+[node name="AI" type="SpinBox" parent="MarginContainer/VBoxContainer/Confirmation/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+suffix = "AI"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Confirmation"]
+layout_mode = 2
+
+[node name="LapsLabel" type="Label" parent="MarginContainer/VBoxContainer/Confirmation/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_type_variation = &"BigLabel"
+text = "Laps"
+vertical_alignment = 1
+
+[node name="Laps" type="SpinBox" parent="MarginContainer/VBoxContainer/Confirmation/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+suffix = "AI"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Confirmation"]
+layout_mode = 2
+
+[node name="Difficuly" type="Label" parent="MarginContainer/VBoxContainer/Confirmation/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_type_variation = &"BigLabel"
+text = "Difficulty"
+vertical_alignment = 1
+
+[node name="Difficulty" type="OptionButton" parent="MarginContainer/VBoxContainer/Confirmation/HBoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 tooltip_text = "Difficulty"
-focus_neighbor_left = NodePath("../Menu")
+
+[node name="Space2" type="Control" parent="MarginContainer/VBoxContainer/Confirmation"]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Race" type="Button" parent="MarginContainer/VBoxContainer/Confirmation"]
 layout_mode = 2
@@ -143,5 +189,5 @@ always_on_top = true
 [connection signal="button_down" from="MarginContainer/VBoxContainer/Selection/Mode/Chrono" to="." method="_on_chrono_button_down"]
 [connection signal="button_down" from="MarginContainer/VBoxContainer/Selection/Mode/AI" to="." method="_on_ai_button_down"]
 [connection signal="button_down" from="MarginContainer/VBoxContainer/Confirmation/Menu" to="." method="_on_menu_button_down"]
-[connection signal="item_selected" from="MarginContainer/VBoxContainer/Confirmation/Difficulty" to="." method="_on_difficulty_item_selected"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/Confirmation/HBoxContainer3/Difficulty" to="." method="_on_difficulty_item_selected"]
 [connection signal="button_down" from="MarginContainer/VBoxContainer/Confirmation/Race" to="." method="_on_race_button_down"]

@@ -24,7 +24,6 @@ position = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_bysr2")
 
 [node name="DriverNameBG" type="PanelContainer" parent="."]
-visible = false
 offset_left = 96.0
 offset_top = -39.0
 offset_right = 176.0

@@ -1,27 +1,35 @@
 extends CanvasLayer
 
 @export var menu_scene : PackedScene
+
 @onready var difficulty_choice : OptionButton = %Difficulty
+@onready var ai_number_choice : SpinBox = %AI
+@onready var laps_number_choice : SpinBox = %Laps
+
 @onready var mode_place : VBoxContainer = %Mode
 @onready var track_place : VBoxContainer = %Track
 @onready var cars_selection : GridContainer = %CarsSelection
+
 @onready var info_dialog : AcceptDialog = $InfoDialog
 
 # options selected
 var mode : Race.MODE = Race.MODE.CHRONO
 var track : TrackData = null
-var car : CarData = null
+var car : CarData
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	info_dialog.hide()
+	ai_number_choice.editable = false
 	if OptionsValues.input == OptionsValues.INPUT.CONTROLLER:
 		%Chrono.grab_focus()
 
 	init_difficulty()
 	init_cars(Data.car_list)
 	init_tracks(Data.track_list)
+	init_laps()
+	init_ai()
 
 #region load and init resources
 
@@ -59,7 +67,15 @@ func init_difficulty() -> void:
 		if OptionsValues.difficulty == OptionsValues.DIFFICULTY[difficulty]:
 			selected_index = index
 	difficulty_choice.select(selected_index)
-	
+
+func init_laps() -> void:
+	laps_number_choice.max_value = Data.MAX_LAPS
+	laps_number_choice.min_value = 1
+	laps_number_choice.value = Data.DEFAULT_LAPS
+		
+func init_ai() -> void:
+	ai_number_choice.max_value = Data.MAX_DRIVER
+	ai_number_choice.value = Data.DEFAULT_DRIVERS
 
 #endregion
 
@@ -73,9 +89,11 @@ func _on_difficulty_item_selected(index) -> void:
 
 func _on_chrono_button_down() -> void:
 	mode = Race.MODE.CHRONO
+	ai_number_choice.editable = false
 
 func _on_ai_button_down() -> void:
 	mode = Race.MODE.AI
+	ai_number_choice.editable = true
 
 func track_selected(selected_track:TrackData) -> void:
 	if Data.track_list.find(selected_track) != -1:
@@ -83,6 +101,7 @@ func track_selected(selected_track:TrackData) -> void:
 
 func car_selected(selected_car:CarData) -> void:
 	if Data.car_list.find(selected_car) != -1:
+		car = selected_car
 		CurrentDriver.driver.car_data = selected_car
 
 func _on_race_button_down() -> void:
@@ -90,10 +109,10 @@ func _on_race_button_down() -> void:
 		info_dialog.dialog_text = "You didn't choose a race !"
 		info_dialog.show()
 		return
-	if CurrentDriver.driver.car_data == null:
+	if car == null:
 		info_dialog.dialog_text = "You didn't choose a car !"
 		info_dialog.show()
 		return
-	Race.singleplayer(track, mode)
+	Race.singleplayer(track, mode, car, int(laps_number_choice.value), int(ai_number_choice.value))
 
 #endregion

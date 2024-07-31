@@ -3,6 +3,11 @@ extends Node
 var cars_path : String = "res://Resources/Cars/"
 var track_path : String = "res://Resources/Tracks/"
 
+const MAX_LAPS : int = 25
+const MAX_DRIVER : int = 20
+const DEFAULT_LAPS : int = 6
+const DEFAULT_DRIVERS : int = 20
+
 var car_list : Array[CarData]
 var track_list : Array[TrackData]
 const random_name : Array[String] = [
