@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci8fiink70k2u"]
+
+[ext_resource type="Script" path="res://Scripts/QTE/qte_player.gd" id="1_rtbcx"]
+[ext_resource type="PackedScene" uid="uid://bvfxnyqtgg3ge" path="res://Scenes/QTE/qte_display.tscn" id="2_d6tg1"]
+
+[node name="QTEPlayer" type="Node"]
+script = ExtResource("1_rtbcx")
+QTE_DISPLAY = ExtResource("2_d6tg1")
+
+[node name="QTETimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 5.0
+
+[connection signal="timeout" from="QTETimer" to="." method="_on_qte_timer_timeout"]

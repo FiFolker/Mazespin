@@ -7,7 +7,7 @@ var rng : float
 var time_to_wait : float
 
 func _ready():
-	setup()
+	super._ready()
 	generate_qte()
 	
 func generate_qte() -> void:

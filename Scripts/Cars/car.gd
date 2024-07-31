@@ -49,7 +49,7 @@ func _on_car_area_entered(area:Area2D):
 	if area is QTEArea:
 		qte_sequence = QTEArea.new()
 		qte_sequence.init(area, self)
-		print(self, qte_sequence)
+		
 		add_child(qte_sequence)
 		
 		var time_before_crossing_area : float= qte_sequence.number_of_qte * OptionsValues.difficulty
