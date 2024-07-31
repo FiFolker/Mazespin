@@ -39,7 +39,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta:float):
-	if Race.state == Race.State.RUNING and driver.current_lap < Race.max_laps:
+	if Race.state == Race.State.RUNING and Race.can_i_race(driver):
 		self.progress += speed*delta
 	if self.progress_ratio == 1:
 		if driver.ranking == 1:

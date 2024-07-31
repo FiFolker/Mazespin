@@ -14,6 +14,7 @@ extends CanvasLayer
 @onready var driver_place : VBoxContainer = %DriverPlace
 
 var countdown : int
+var max_laps_str : String
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,8 +28,8 @@ func _ready():
 	best_chrono.visible = true
 	
 	chrono_label.text = Race.chrono_to_string(CurrentDriver.driver.lap_chrono, chrono_precision)
-	
-	laps_label.text = str(Race.general_lap)+"/"+str(Race.max_laps)
+	max_laps_str = " lap" if Race.max_laps == -1 else "/"+str(Race.max_laps)
+	laps_label.text = str(Race.general_lap)+max_laps_str
 	init_drivers()
 	
 
@@ -57,7 +58,7 @@ func countdown_end() -> void:
 	countdown_place.visible = false
 	
 func on_lap_finished() -> void:
-	laps_label.text = str(Race.general_lap)+"/"+str(Race.max_laps)
+	laps_label.text = str(Race.general_lap)+max_laps_str
 	
 func _on_new_best_lap() -> void:
 	best_chrono.visible = true

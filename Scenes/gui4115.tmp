@@ -1,0 +1,122 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcti1q7n1f5br"]
+
+[ext_resource type="Script" path="res://Scripts/UI/gui.gd" id="1_ahblo"]
+[ext_resource type="PackedScene" uid="uid://w8621vujr85u" path="res://Scenes/UI/driver_template.tscn" id="2_6hsxg"]
+[ext_resource type="Texture2D" uid="uid://6m2bw84f1mnl" path="res://Assets/Images/Icons/checkered_flag.png" id="2_e8w3h"]
+[ext_resource type="Script" path="res://Scenes/UI/update_ranking_ui.gd" id="4_ycgr5"]
+
+[node name="GUI" type="CanvasLayer"]
+script = ExtResource("1_ahblo")
+driver_template = ExtResource("2_6hsxg")
+
+[node name="Timer" type="PanelContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -66.5
+offset_right = 66.5
+offset_bottom = 57.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Timer"]
+layout_mode = 2
+
+[node name="ChronoLabel" type="Label" parent="Timer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Chrono"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="ChronoVal" type="Label" parent="Timer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "	"
+horizontal_alignment = 1
+
+[node name="BestChrono" type="Label" parent="Timer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"BestLapLabel"
+horizontal_alignment = 1
+
+[node name="Countdown" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CountdownLabel" type="Label" parent="Countdown"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_type_variation = &"CountdownLabel"
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 200.0
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 150
+
+[node name="LeaderboardBg" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/LeaderboardBg"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Leaderboard" type="VBoxContainer" parent="MarginContainer/LeaderboardBg/MarginContainer"]
+layout_mode = 2
+
+[node name="Top" type="HBoxContainer" parent="MarginContainer/LeaderboardBg/MarginContainer/Leaderboard"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/LeaderboardBg/MarginContainer/Leaderboard/Top"]
+layout_mode = 2
+texture = ExtResource("2_e8w3h")
+expand_mode = 3
+
+[node name="LeaderboardTitle" type="Label" parent="MarginContainer/LeaderboardBg/MarginContainer/Leaderboard/Top"]
+layout_mode = 2
+theme_type_variation = &"BigLabel"
+text = "Race"
+horizontal_alignment = 1
+
+[node name="LapsLabel" type="Label" parent="MarginContainer/LeaderboardBg/MarginContainer/Leaderboard"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"BigLabel"
+text = "Lap 0/1"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/LeaderboardBg/MarginContainer/Leaderboard"]
+layout_mode = 2
+
+[node name="DriverPlace" type="VBoxContainer" parent="MarginContainer/LeaderboardBg/MarginContainer/Leaderboard"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("4_ycgr5")

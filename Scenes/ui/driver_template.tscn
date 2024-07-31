@@ -24,23 +24,36 @@ alignment = 1
 [node name="RankingLabel" type="Label" parent="DriverTemplate"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 1
 theme_type_variation = &"LeaderboardLabel"
 text = "1"
+vertical_alignment = 1
 
 [node name="CarIcon" type="TextureRect" parent="DriverTemplate"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 6
 texture = ExtResource("2_uep6a")
 expand_mode = 3
+stretch_mode = 4
 
 [node name="DriverName" type="Label" parent="DriverTemplate"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 1
 theme_type_variation = &"LeaderboardLabel"
-text = "Elouan"
+text = "FIF"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Chrono" type="Label" parent="DriverTemplate"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 1
 theme_type_variation = &"LeaderboardLabel"
 text = "1:25.051"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -125,6 +125,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 
 [node name="AILabel" type="Label" parent="MarginContainer/VBoxContainer/Confirmation/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -135,12 +136,15 @@ vertical_alignment = 1
 [node name="AI" type="SpinBox" parent="MarginContainer/VBoxContainer/Confirmation/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Number of AI on the race"
+focus_neighbor_left = NodePath("../../Menu")
 suffix = "AI"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Confirmation"]
 layout_mode = 2
 
 [node name="LapsLabel" type="Label" parent="MarginContainer/VBoxContainer/Confirmation/HBoxContainer2"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -151,12 +155,14 @@ vertical_alignment = 1
 [node name="Laps" type="SpinBox" parent="MarginContainer/VBoxContainer/Confirmation/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
-suffix = "AI"
+tooltip_text = "Max laps number for the race"
+suffix = "Laps"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Confirmation"]
 layout_mode = 2
 
 [node name="Difficuly" type="Label" parent="MarginContainer/VBoxContainer/Confirmation/HBoxContainer3"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -169,6 +175,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 tooltip_text = "Difficulty"
+focus_neighbor_right = NodePath("../../Race")
 
 [node name="Space2" type="Control" parent="MarginContainer/VBoxContainer/Confirmation"]
 layout_mode = 2

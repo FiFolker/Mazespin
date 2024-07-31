@@ -58,7 +58,7 @@ func init(_track:TrackData, _mode:MODE, _laps_number:int, _ai_number:int):
 	track = _track
 	mode = _mode
 	general_lap = 0
-	max_laps = _laps_number
+	max_laps = -1 if mode == MODE.CHRONO else _laps_number
 	number_driver = 0 if mode == MODE.CHRONO else _ai_number
 	state = State.WAITING
 	wait_last_drivers = false
@@ -67,12 +67,11 @@ func init(_track:TrackData, _mode:MODE, _laps_number:int, _ai_number:int):
 	
 func init_drivers() -> void:
 	for i in number_driver:
-		if i > leaderboard.size()-1:
-			var random_car = Data.car_list.pick_random()
-			var driver_data : DriverData = DriverData.new(Data.random_name.pick_random() + str(i), random_car, i+1)
-			var driver : DriverAI = DriverAI.new()
-			driver.setup(driver_data)
-			leaderboard.append(driver)
+		var random_car = Data.car_list.pick_random()
+		var driver_data : DriverData = DriverData.new(Data.random_name.pick_random() + str(i), random_car, leaderboard.size()+1)
+		var driver : DriverAI = DriverAI.new()
+		driver.setup(driver_data)
+		leaderboard.append(driver)
 	
 func init_cars() -> void:
 	var race_route : Path2D = SceneManager.current_scene.find_child("RaceRoute") as Path2D
@@ -101,6 +100,8 @@ func chrono_to_string(chrono:float, precision:int = chrono_precision) -> String:
 
 func _on_lap_finished() -> void:
 	general_lap += 1
+	if max_laps == -1:
+		return
 	if general_lap >= max_laps:
 		wait_last_drivers = true
 		
@@ -108,3 +109,8 @@ func end_race() -> void:
 	state = Race.State.FINISHED
 	await get_tree().create_timer(5).timeout
 	SceneManager.goto_scene_menu("end")
+
+func can_i_race(driver:Driver) -> bool:
+	if max_laps == -1:
+		return true
+	return driver.current_lap < max_laps

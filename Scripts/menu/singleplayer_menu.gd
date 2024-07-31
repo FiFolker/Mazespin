@@ -74,8 +74,8 @@ func init_laps() -> void:
 	laps_number_choice.value = Data.DEFAULT_LAPS
 		
 func init_ai() -> void:
-	ai_number_choice.max_value = Data.MAX_DRIVER
-	ai_number_choice.value = Data.DEFAULT_DRIVERS
+	ai_number_choice.max_value = Data.MAX_AI_NB
+	ai_number_choice.value = Data.DEFAULT_AI_NB
 
 #endregion
 

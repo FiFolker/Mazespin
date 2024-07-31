@@ -45,7 +45,25 @@ var car : Car :
 		_driver_data.car = value
 	get:
 		return _driver_data.car
-		
+
+# var than you can only get and there are useful datas
+var _space_diff : float :
+	set(value):
+		pass
+	get:
+		return (Race.leaderboard[0].car.progress_ratio + Race.leaderboard[0].current_lap) - (car.progress_ratio + current_lap)
+
+var time_diff : float :
+	set(value):
+		pass
+	get:
+		return _space_diff * Race.leaderboard[0].general_chrono
+
+var lap_diff : int :
+	set(value):
+		pass
+	get:
+		return floori(_space_diff)
 
 func _ready():
 	if _driver_data == null:
@@ -59,7 +77,7 @@ func short_name() -> String:
 	return driver_name.substr(0, 3).to_upper()
 
 func _process(delta:float):
-	if Race.state == Race.State.RUNING and current_lap < Race.max_laps:
+	if Race.state == Race.State.RUNING and Race.can_i_race(self):
 		general_chrono += delta
 		lap_chrono += delta
 		if ranking != 1:

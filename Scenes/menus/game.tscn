@@ -27,26 +27,27 @@ polygon = PackedVector2Array(591, 541, 724, 636, 691, 668, 531, 537)
 [node name="QTEArea3" parent="Level" instance=ExtResource("1_efh4w")]
 position = Vector2(621, 380)
 scale = Vector2(2.89, 2.89)
+number_of_qte = 1
 
 [node name="QTEArea" parent="Level" instance=ExtResource("1_efh4w")]
 position = Vector2(867, 281)
 scale = Vector2(2.89, 2.89)
-number_of_qte = 2
+number_of_qte = 1
 
 [node name="QTEArea2" parent="Level" instance=ExtResource("1_efh4w")]
 position = Vector2(836, -634)
 scale = Vector2(2.89, 2.89)
-number_of_qte = 5
+number_of_qte = 1
 
 [node name="QTEArea4" parent="Level" instance=ExtResource("1_efh4w")]
 position = Vector2(91, -630)
 scale = Vector2(2.89, 2.89)
-number_of_qte = 5
+number_of_qte = 1
 
 [node name="QTEArea5" parent="Level" instance=ExtResource("1_efh4w")]
 position = Vector2(325, 573)
 scale = Vector2(2.89, 2.89)
-number_of_qte = 5
+number_of_qte = 1
 
 [node name="RaceRoute" type="Path2D" parent="."]
 position = Vector2(538, 578)

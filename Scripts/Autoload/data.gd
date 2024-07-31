@@ -5,8 +5,10 @@ var track_path : String = "res://Resources/Tracks/"
 
 const MAX_LAPS : int = 25
 const MAX_DRIVER : int = 20
+const MAX_AI_NB : int = 19
 const DEFAULT_LAPS : int = 6
 const DEFAULT_DRIVERS : int = 20
+const DEFAULT_AI_NB : int = 19
 
 var car_list : Array[CarData]
 var track_list : Array[TrackData]
