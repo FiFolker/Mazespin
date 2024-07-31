@@ -30,7 +30,9 @@ func _ready():
 	generate_qte()
 	
 
-func _input(event:InputEvent) -> void:	
+func _input(event:InputEvent) -> void:
+	if self is QTEAI:
+		return
 	if event.is_action_pressed("current_qte") and key_released:
 		key_released = false
 		qte_done.emit()

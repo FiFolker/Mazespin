@@ -49,7 +49,7 @@ func _on_car_area_entered(area:Area2D):
 	if area is QTEArea:
 		qte_sequence = QTEArea.new()
 		qte_sequence.init(area, self)
-		
+		print(self, qte_sequence)
 		add_child(qte_sequence)
 		
 		var time_before_crossing_area : float= qte_sequence.number_of_qte * OptionsValues.difficulty
@@ -64,12 +64,12 @@ func _on_car_area_entered(area:Area2D):
 		qte_sequence.qte_sequence_failure.connect(qte_sequence_failure)
 
 func qte_sequence_success() -> void:
-	print("QTE success")
+	#print(self, " QTE success")
 	speed = max_speed
 	qte_sequence.queue_free()
 
 func qte_sequence_failure() -> void:
-	print("QTE failed")
+	#print(self, " QTE failed")
 	speed = max_speed * 0.5
 	qte_sequence.queue_free()
 

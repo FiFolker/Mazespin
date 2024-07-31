@@ -14,8 +14,8 @@ func generate_qte() -> void:
 	key_to_find = get_random_key_from_pool()
 	#rand_key = get_random_key_from_pool() useful only if i want to do it in this way idk if it's better or not
 	rng = randf() # to know if he will win or not
-	time_to_wait = randf_range(qte_timer.wait_time*0.05, qte_timer.wait_time)
-	#print("to find : ", key_to_find, "\nfound : ", rand_key, "\nrng :", rng,"\ntime to wait : ", time_to_wait) debug print
+	time_to_wait = randf_range(qte_timer.wait_time*0.05, qte_timer.wait_time*0.3) #define better time
+	#print("to find : ", key_to_find, "\nfound : ", rand_key, "\nrng :", rng,"\ntime to wait : ", time_to_wait) # debug print
 	qte_timer.start()
 
 func _process(delta):

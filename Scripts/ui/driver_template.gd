@@ -27,7 +27,14 @@ func _process(delta:float):
 	
 	if Race.state == Race.State.RUNING:
 		if driver.ranking != 1:
-			var difference = (driver.car.progress_ratio + (driver.current_lap - Race.leaderboard[0].current_lap )) * Race.leaderboard[0].chrono
+			
+			var difference = (Race.leaderboard[0].car.progress_ratio - (driver.car.progress_ratio + (driver.current_lap - Race.leaderboard[0].current_lap ))) * Race.leaderboard[0].chrono
+			#print("========================================",
+			#"\nprogress ratio:", driver.car.progress_ratio, 
+			#"\ncurrent lap:", driver.current_lap, 
+			#"\nleader's current lap:", Race.leaderboard[0].current_lap, 
+			#"\nleader's chrono:", Race.leaderboard[0].chrono, 
+			#"\ndifference:", difference);
 			chrono.text = "+" + Race.chrono_to_string(difference, Race.chrono_precision)
 		else:
 			chrono.text = Race.chrono_to_string(driver.chrono, Race.chrono_precision)

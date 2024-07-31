@@ -39,7 +39,6 @@ func _ready():
 	if _driver_data == null:
 		push_error(self, " driver not initialized")
 	car = get_parent() #get path follow 2d which is the car
-	print(car)
 
 func setup(driver_data:DriverData):
 	self._driver_data = driver_data

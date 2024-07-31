@@ -8,6 +8,8 @@ extends CanvasLayer
 @onready var countdown_place = %Countdown
 @onready var countdown_label = %CountdownLabel
 
+@onready var laps_label = %LapsLabel
+
 @onready var driver_place : VBoxContainer = %DriverPlace
 
 var countdown : int
@@ -21,6 +23,7 @@ func _ready():
 	
 	chrono_label.text = Race.chrono_to_string(CurrentDriver.driver.chrono, chrono_precision)
 	
+	laps_label.text = str(Race.general_lap)
 	init_drivers()
 	
 
@@ -51,4 +54,5 @@ func countdown_end() -> void:
 	
 func on_lap_finished() -> void:
 	Race.general_lap += 1
+	laps_label.text = str(Race.general_lap)
 	
