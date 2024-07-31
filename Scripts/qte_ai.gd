@@ -7,7 +7,6 @@ var rng : float
 var time_to_wait : float
 
 func _ready():
-	print("new qte ai ready")
 	setup()
 	generate_qte()
 	

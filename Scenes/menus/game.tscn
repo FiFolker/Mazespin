@@ -1,15 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctbick08lhn73"]
+[gd_scene load_steps=3 format=3 uid="uid://ctbick08lhn73"]
 
 [ext_resource type="PackedScene" uid="uid://xr0cftkymv3u" path="res://Scenes/QTE/qte_area.tscn" id="1_efh4w"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_7iiwr"]
 
 [sub_resource type="Curve2D" id="Curve2D_reel6"]
 bake_interval = 64.0
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 100, 50, -77.1628, -70.4204, 77.1628, 70.4204, 101, -236, -34.7058, 32.7036, 34.7058, -32.7036, 330, -272, 0, 0, 0, 0, 328, -1179)
+"points": PackedVector2Array(-33.6214, 86.3917, 33.6214, -86.3917, 113, 37, -108.117, -4.54327, 108.117, 4.54327, 101, -236, -34.7058, 32.7036, 34.7058, -32.7036, 330, -272, 26.9695, 223.248, -26.9695, -223.248, 328, -1179, 35.2778, -367.897, -35.2778, 367.897, -562, -1002, -48.1085, -33.8541, 48.1085, 33.8541, -188, 39, -76.6173, 46.3267, 76.6173, -46.3267, 113, 37)
 }
-point_count = 4
+point_count = 7
 
 [node name="Main" type="Node2D"]
 
@@ -19,37 +17,37 @@ scale = Vector2(2.89, 2.89)
 
 [node name="Level" type="Node2D" parent="."]
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Level"]
-position = Vector2(647.5, 529.5)
-scale = Vector2(83.0001, 335)
-mesh = SubResource("BoxMesh_7iiwr")
+[node name="Race" type="Polygon2D" parent="Level"]
+polygon = PackedVector2Array(270, 610, 350, 700, 503, 724, 665, 694, 743, 619, 677, 431, 878, 377, 974, 263, 956, -690, 752, -801, 323, -819, 0, -702, -138, -441, -51, 29, 265, 609, 350, 523, 57, -211, 72, -441, 186, -570, 431, -624, 692, -627, 791, -501, 815, 197, 758, 236, 590, 281, 530, 365, 590, 541, 344, 526, 264, 608)
 
-[node name="MeshInstance2D2" type="MeshInstance2D" parent="Level"]
-position = Vector2(797.661, 403)
-rotation = 1.57079
-scale = Vector2(83.0001, 220.321)
-mesh = SubResource("BoxMesh_7iiwr")
+[node name="Polygon2D" type="Polygon2D" parent="Level"]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(591, 541, 724, 636, 691, 668, 531, 537)
 
-[node name="MeshInstance2D3" type="MeshInstance2D" parent="Level"]
-position = Vector2(867, -80.75)
-scale = Vector2(83.0001, 902.5)
-mesh = SubResource("BoxMesh_7iiwr")
+[node name="QTEArea3" parent="Level" instance=ExtResource("1_efh4w")]
+position = Vector2(621, 380)
+scale = Vector2(2.89, 2.89)
 
 [node name="QTEArea" parent="Level" instance=ExtResource("1_efh4w")]
-position = Vector2(867, 40)
+position = Vector2(867, 281)
 scale = Vector2(2.89, 2.89)
 number_of_qte = 2
 
 [node name="QTEArea2" parent="Level" instance=ExtResource("1_efh4w")]
-position = Vector2(867, -529)
+position = Vector2(836, -634)
 scale = Vector2(2.89, 2.89)
 number_of_qte = 5
 
-[node name="QTEArea3" parent="Level" instance=ExtResource("1_efh4w")]
-position = Vector2(651, 406)
+[node name="QTEArea4" parent="Level" instance=ExtResource("1_efh4w")]
+position = Vector2(91, -630)
 scale = Vector2(2.89, 2.89)
-number_of_qte = 15
+number_of_qte = 5
+
+[node name="QTEArea5" parent="Level" instance=ExtResource("1_efh4w")]
+position = Vector2(325, 573)
+scale = Vector2(2.89, 2.89)
+number_of_qte = 5
 
 [node name="RaceRoute" type="Path2D" parent="."]
-position = Vector2(544, 647)
+position = Vector2(538, 578)
 curve = SubResource("Curve2D_reel6")

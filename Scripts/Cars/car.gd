@@ -14,7 +14,7 @@ class_name Car
 
 var speed_change_ratio : float
 var driver : Driver
-var index_qte : int = 0
+var qte_sequence : QTEArea
 
 func init(_driver:Driver):
 	if _driver is DriverAI:
@@ -47,12 +47,13 @@ func _process(delta:float):
 
 func _on_car_area_entered(area:Area2D):
 	if area is QTEArea:
-		index_qte = 0
-		var qte_sequence : QTEArea = area
+		qte_sequence = QTEArea.new()
+		qte_sequence.init(area, self)
 		
+		add_child(qte_sequence)
 		
 		var time_before_crossing_area : float= qte_sequence.number_of_qte * OptionsValues.difficulty
-		var area_size:Vector2 = qte_sequence.get_area_size()
+		var area_size:Vector2 = area.get_area_size()
 		
 		# calculate speed to corssing the area
 		speed_change_ratio = speed / (area_size.y / time_before_crossing_area)
@@ -64,10 +65,12 @@ func _on_car_area_entered(area:Area2D):
 
 func qte_sequence_success() -> void:
 	print("QTE success")
-	speed *= speed_change_ratio
+	speed = max_speed
+	qte_sequence.queue_free()
 
 func qte_sequence_failure() -> void:
 	print("QTE failed")
-	speed *= speed_change_ratio
+	speed = max_speed * 0.5
+	qte_sequence.queue_free()
 
 

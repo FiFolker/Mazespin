@@ -44,14 +44,14 @@ func init(_track:TrackData, _mode:MODE):
 	mode = _mode
 	general_lap = 0
 	max_laps = 1
-	number_driver = 0 if mode == MODE.CHRONO else 20
+	number_driver = 0 if mode == MODE.CHRONO else 2
 	state = State.WAITING
 	init_drivers()
 	SceneManager.goto_scene_packed(track.scene)
 	
 func init_drivers() -> void:
 	for i in number_driver:
-		if i > leaderboard.size():
+		if i > leaderboard.size()-1:
 			var random_car = Data.car_list.pick_random()
 			var driver_data : DriverData = DriverData.new(Data.random_name.pick_random() + str(i), random_car, i+1)
 			var driver : DriverAI = DriverAI.new()
