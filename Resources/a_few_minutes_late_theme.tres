@@ -27,6 +27,8 @@ texture_margin_bottom = 8.0
 modulate_color = Color(0.0432443, 0.819067, 0.199982, 1)
 
 [resource]
+BestLapLabel/base_type = &"Label"
+BestLapLabel/colors/font_color = Color(0.655378, 0.350737, 0.859799, 1)
 BigLabel/base_type = &"Label"
 BigLabel/font_sizes/font_size = 48
 BigLabel/fonts/font = ExtResource("1_gxnlp")

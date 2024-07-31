@@ -7,6 +7,7 @@
 size = Vector2(131, 70)
 
 [node name="Car" type="PathFollow2D"]
+loop = false
 script = ExtResource("1_cop3c")
 max_speed = 400.0
 

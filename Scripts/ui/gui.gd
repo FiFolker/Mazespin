@@ -4,6 +4,7 @@ extends CanvasLayer
 @export var driver_template : PackedScene
 
 @onready var chrono_label = %ChronoVal
+@onready var best_chrono = %BestChrono
 
 @onready var countdown_place = %Countdown
 @onready var countdown_label = %CountdownLabel
@@ -19,11 +20,15 @@ func _ready():
 	#countdown
 	countdown_place.visible = true
 	countdown = Race.countdown
+	
 	Race.lap_finished.connect(on_lap_finished)
 	
-	chrono_label.text = Race.chrono_to_string(CurrentDriver.driver.chrono, chrono_precision)
+	CurrentDriver.driver.new_best_lap.connect(_on_new_best_lap)
+	best_chrono.visible = true
 	
-	laps_label.text = str(Race.general_lap)
+	chrono_label.text = Race.chrono_to_string(CurrentDriver.driver.lap_chrono, chrono_precision)
+	
+	laps_label.text = str(Race.general_lap)+"/"+str(Race.max_laps)
 	init_drivers()
 	
 
@@ -36,7 +41,7 @@ func init_drivers() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta:float):
-	chrono_label.text = Race.chrono_to_string(CurrentDriver.driver.chrono, chrono_precision)
+	chrono_label.text = Race.chrono_to_string(CurrentDriver.driver.lap_chrono, chrono_precision)
 		
 	if Race.countdown_timer.time_left > 0 and countdown_place.visible ==true:
 		
@@ -47,12 +52,14 @@ func _process(delta:float):
 			countdown_label.text = "START"
 			countdown_end()
 	
-
 func countdown_end() -> void:
 	await get_tree().create_timer(.5).timeout
 	countdown_place.visible = false
 	
 func on_lap_finished() -> void:
-	Race.general_lap += 1
-	laps_label.text = str(Race.general_lap)
+	laps_label.text = str(Race.general_lap)+"/"+str(Race.max_laps)
 	
+func _on_new_best_lap() -> void:
+	best_chrono.visible = true
+	best_chrono.text = "Best : "+ Race.chrono_to_string(CurrentDriver.driver.best_lap, chrono_precision)
+

@@ -41,8 +41,11 @@ func _ready():
 func _process(delta:float):
 	if Race.state == Race.State.RUNING:
 		self.progress += speed*delta
-	if self.progress == 1:
-		Race.lap_finished.emit()
+	if self.progress_ratio == 1:
+		if driver.ranking == 1:
+			Race.lap_finished.emit()
+		driver.lap_completed()
+		
 	
 
 func _on_car_area_entered(area:Area2D):

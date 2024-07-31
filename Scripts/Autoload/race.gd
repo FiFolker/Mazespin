@@ -24,6 +24,7 @@ var countdown : float = 3.5
 
 func _ready():
 	SceneManager.scene_changing_ended.connect(_on_scene_changing_ended)
+	lap_finished.connect(_on_lap_finished)
 	
 
 func _on_scene_changing_ended():
@@ -36,14 +37,13 @@ func singleplayer(_track:TrackData, _mode:MODE) -> void:
 	leaderboard.clear()
 	leaderboard.append(CurrentDriver.driver)
 	CurrentDriver.driver.ranking = leaderboard.size()
-	CurrentDriver.driver.chrono = 0
 	init(_track, _mode)
 
 func init(_track:TrackData, _mode:MODE):
 	track = _track
 	mode = _mode
 	general_lap = 0
-	max_laps = 1
+	max_laps = 3
 	number_driver = 0 if mode == MODE.CHRONO else 2
 	state = State.WAITING
 	init_drivers()
@@ -74,7 +74,7 @@ func start_countdown(time:float) -> void:
 func start_race() -> void:
 	state = State.RUNING
 
-func chrono_to_string(chrono:float, precision:int) -> String:
+func chrono_to_string(chrono:float, precision:int = chrono_precision) -> String:
 	var minute : int = int(chrono/60)
 	var sec : float = float(chrono - (minute*60))
 	
@@ -82,3 +82,8 @@ func chrono_to_string(chrono:float, precision:int) -> String:
 		return str(sec).pad_decimals(precision)
 	
 	return str(minute) + ":" + str(sec).pad_decimals(precision)
+
+func _on_lap_finished() -> void:
+	general_lap += 1
+	if general_lap >= max_laps:
+		state = Race.State.FINISHED

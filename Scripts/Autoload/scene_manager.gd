@@ -1,7 +1,5 @@
 extends Node
 
-signal has_won
-signal has_lost
 signal is_ended
 
 signal scene_changing(old_scene_path:String)
@@ -16,8 +14,6 @@ var current_scene : Node
 func _ready():
 	setup_scenes(menu_path, false)
 	scene_changing.connect(on_scene_changing)
-	has_won.connect(win)
-	has_lost.connect(lose)
 	is_ended.connect(end)
 	current_scene = get_tree().current_scene
 
@@ -36,12 +32,6 @@ func setup_scenes(path:String, debug:bool):
 			file_name = dir.get_next()
 	else:
 		print("An error occurred when trying to access the path.")
-
-func win() -> void:
-	get_tree().change_scene_to_file(scenes["win"])
-	
-func lose() -> void:
-	get_tree().change_scene_to_file(scenes["lose"])
 
 func end() -> void:
 	get_tree().change_scene_to_file(scenes["end"])

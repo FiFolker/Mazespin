@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcti1q7n1f5br"]
+[gd_scene load_steps=5 format=3 uid="uid://dcti1q7n1f5br"]
 
 [ext_resource type="Script" path="res://Scripts/UI/gui.gd" id="1_ahblo"]
 [ext_resource type="PackedScene" uid="uid://w8621vujr85u" path="res://Scenes/UI/driver_template.tscn" id="2_6hsxg"]
 [ext_resource type="Texture2D" uid="uid://6m2bw84f1mnl" path="res://Assets/Images/Icons/checkered_flag.png" id="2_e8w3h"]
+[ext_resource type="Script" path="res://Scenes/UI/update_ranking_ui.gd" id="4_ycgr5"]
 
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource("1_ahblo")
@@ -32,6 +33,15 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 text = "	"
+horizontal_alignment = 1
+
+[node name="BestChrono" type="Label" parent="Timer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"BestLapLabel"
 horizontal_alignment = 1
 
 [node name="Countdown" type="PanelContainer" parent="."]
@@ -109,3 +119,4 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+script = ExtResource("4_ycgr5")

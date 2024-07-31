@@ -1,6 +1,8 @@
 extends Node2D
 class_name Driver
 
+signal new_best_lap
+
 var _driver_data : DriverData
 # getter and setter to access to driver data without have to do driver.driver_data.driver_name ... boring
 var driver_name : String :
@@ -13,11 +15,21 @@ var car_data : CarData :
 		_driver_data.car_data = value
 	get:
 		return _driver_data.car_data
-var chrono : float : 
+var general_chrono : float : 
 	set(value):
-		_driver_data.chrono = value
+		_driver_data.general_chrono = value
 	get:
-		return _driver_data.chrono
+		return _driver_data.general_chrono
+var lap_chrono : float : 
+	set(value):
+		_driver_data.lap_chrono = value
+	get:
+		return _driver_data.lap_chrono
+var best_lap : float : 
+	set(value):
+		_driver_data.best_lap = value
+	get:
+		return _driver_data.best_lap
 var ranking : int : 
 	set(value):
 		_driver_data.ranking = value
@@ -48,4 +60,26 @@ func short_name() -> String:
 
 func _process(delta:float):
 	if Race.state == Race.State.RUNING:
-		chrono += delta
+		general_chrono += delta
+		lap_chrono += delta
+		if ranking != 1:
+			var driver_ahead = Race.leaderboard[ranking-2]
+			var progression_driver_ahead = driver_ahead.car.progress_ratio + driver_ahead.current_lap
+			var current_progresion = car.progress_ratio + current_lap
+			if current_progresion > progression_driver_ahead:
+				print(self.driver_name," : ", self.ranking,
+				" is overtaking ", 
+				driver_ahead.driver_name," : ",driver_ahead.ranking)
+				Race.leaderboard[ranking-1] = driver_ahead
+				Race.leaderboard[ranking-2] = self
+				ranking -= 1
+				driver_ahead.ranking += 1
+				Race.ranking_update.emit()
+
+func lap_completed() -> void:
+	if lap_chrono < self.best_lap or self.best_lap == 0:
+		self.best_lap = lap_chrono
+		new_best_lap.emit()
+	current_lap += 1
+	lap_chrono = 0
+	car.progress_ratio = 0
