@@ -59,7 +59,7 @@ func short_name() -> String:
 	return driver_name.substr(0, 3).to_upper()
 
 func _process(delta:float):
-	if Race.state == Race.State.RUNING:
+	if Race.state == Race.State.RUNING and current_lap < Race.max_laps:
 		general_chrono += delta
 		lap_chrono += delta
 		if ranking != 1:

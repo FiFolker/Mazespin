@@ -21,11 +21,25 @@ var leaderboard : Array[Driver] # need to define driver type or a way to save dr
 var general_lap : int
 var countdown_timer : SceneTreeTimer
 var countdown : float = 3.5
+var wait_last_drivers : bool
+
 
 func _ready():
 	SceneManager.scene_changing_ended.connect(_on_scene_changing_ended)
 	lap_finished.connect(_on_lap_finished)
 	
+func _process(delta):
+	if wait_last_drivers:
+		if check_if_all_drivers_finished():
+			end_race()
+
+func check_if_all_drivers_finished() -> bool:
+	var all_finished : bool = true
+	var i : int = 0
+	while all_finished and i < leaderboard.size() :
+		all_finished = leaderboard[i].current_lap == max_laps
+		i += 1
+	return all_finished
 
 func _on_scene_changing_ended():
 	if track != null:
@@ -43,9 +57,10 @@ func init(_track:TrackData, _mode:MODE):
 	track = _track
 	mode = _mode
 	general_lap = 0
-	max_laps = 3
+	max_laps = 2
 	number_driver = 0 if mode == MODE.CHRONO else 2
 	state = State.WAITING
+	wait_last_drivers = false
 	init_drivers()
 	SceneManager.goto_scene_packed(track.scene)
 	
@@ -86,4 +101,9 @@ func chrono_to_string(chrono:float, precision:int = chrono_precision) -> String:
 func _on_lap_finished() -> void:
 	general_lap += 1
 	if general_lap >= max_laps:
-		state = Race.State.FINISHED
+		wait_last_drivers = true
+		
+func end_race() -> void:
+	state = Race.State.FINISHED
+	await get_tree().create_timer(5).timeout
+	SceneManager.goto_scene_menu("end")

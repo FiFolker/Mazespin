@@ -1,7 +1,5 @@
 extends Node
 
-signal is_ended
-
 signal scene_changing(old_scene_path:String)
 signal scene_changing_ended
 
@@ -14,7 +12,6 @@ var current_scene : Node
 func _ready():
 	setup_scenes(menu_path, false)
 	scene_changing.connect(on_scene_changing)
-	is_ended.connect(end)
 	current_scene = get_tree().current_scene
 
 func setup_scenes(path:String, debug:bool):
@@ -32,9 +29,6 @@ func setup_scenes(path:String, debug:bool):
 			file_name = dir.get_next()
 	else:
 		print("An error occurred when trying to access the path.")
-
-func end() -> void:
-	get_tree().change_scene_to_file(scenes["end"])
 
 func on_scene_changing(old_scene_path:String) -> void:
 	previous_scene = old_scene_path

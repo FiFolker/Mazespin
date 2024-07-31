@@ -27,9 +27,15 @@ func _process(delta:float):
 	
 	if Race.state == Race.State.RUNING:
 		if driver.ranking != 1:
-			
-			var difference = (Race.leaderboard[0].car.progress_ratio - (driver.car.progress_ratio + (driver.current_lap - Race.leaderboard[0].current_lap ))) * Race.leaderboard[0].general_chrono
-			chrono.text = "+" + Race.chrono_to_string(difference)
+			var leader : Driver = Race.leaderboard[0]
+			var space_diff = (leader.car.progress_ratio + leader.current_lap) - (driver.car.progress_ratio + driver.current_lap)
+			var time_diff : float = space_diff * Race.leaderboard[0].general_chrono
+			var chrono_text : String = Race.chrono_to_string(time_diff)
+			var lap_diff : int = floori(space_diff)
+			if lap_diff > 0:
+				var lap_string : String = "lap" if lap_diff == 1 else "laps"
+				chrono_text = str(lap_diff) + lap_string
+			chrono.text = "+" + chrono_text
 		else:
 			chrono.text = "Leader"
 			
