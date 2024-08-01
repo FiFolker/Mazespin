@@ -44,8 +44,8 @@ func init_drivers() -> void:
 func _process(delta:float):
 	chrono_label.text = Race.chrono_to_string(CurrentDriver.driver.lap_chrono, chrono_precision)
 		
-	if Race.countdown_timer.time_left > 0 and countdown_place.visible ==true:
-		
+	if Race.countdown_timer.time_left > 0:
+		countdown_place.visible = true
 		countdown = int(Race.countdown_timer.time_left - delta)
 		if countdown != 0:
 			countdown_label.text = str(countdown)

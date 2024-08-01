@@ -65,6 +65,7 @@ text = "Chrono"
 [node name="AI" type="Button" parent="MarginContainer/VBoxContainer/Selection/Mode"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../../../Confirmation/Menu")
 toggle_mode = true
 button_group = ExtResource("3_mp3og")
 text = "AI"

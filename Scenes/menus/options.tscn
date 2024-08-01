@@ -94,11 +94,11 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MenuBtn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Back" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "MENU"
+text = "BACK"
 
 [connection signal="item_selected" from="PanelContainer/MarginContainer/VBoxContainer/Input/InputChoice" to="." method="_on_input_choice_item_selected"]
 [connection signal="item_selected" from="PanelContainer/MarginContainer/VBoxContainer/Language/Language" to="." method="_on_language_item_selected"]
-[connection signal="button_down" from="PanelContainer/MarginContainer/VBoxContainer/MenuBtn" to="." method="_on_menu_btn_button_down"]
+[connection signal="button_down" from="PanelContainer/MarginContainer/VBoxContainer/Back" to="." method="_on_back_btn_button_down"]

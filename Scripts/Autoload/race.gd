@@ -4,10 +4,12 @@ signal lap_finished
 signal ranking_update
 
 enum MODE {CHRONO, AI}
-enum State {WAITING, RUNING, FINISHED}
+enum State {WAITING, RUNING, PAUSE, FINISHED}
 
 const chrono_precision : int = 3
 var car_scene : PackedScene = load("res://Scenes/car.tscn")
+
+var pause_instantiated : Pause
 
 # race settings
 var track : TrackData
@@ -142,3 +144,13 @@ func can_i_race(driver:Driver) -> bool:
 	if max_laps == -1:
 		return true
 	return driver.current_lap < max_laps
+
+func pause() -> void:
+	state = State.PAUSE
+	var pause_scene = load(SceneManager.scenes["pause"]) as PackedScene
+	pause_instantiated = pause_scene.instantiate() as Pause
+	SceneManager.current_scene.add_child(pause_instantiated)
+
+func resume() -> void:
+	pause_instantiated.queue_free()
+	start_countdown(countdown)

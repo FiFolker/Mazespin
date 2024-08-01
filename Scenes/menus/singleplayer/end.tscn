@@ -114,6 +114,18 @@ text = "BEST_LAP"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="VSeparator5" type="VSeparator" parent="VBoxContainer/MarginContainer/LeaderboardContainer/MarginContainer/Leaderboard/TopInfos"]
+layout_mode = 2
+
+[node name="BestLap2" type="Label" parent="VBoxContainer/MarginContainer/LeaderboardContainer/MarginContainer/Leaderboard/TopInfos"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_type_variation = &"LeaderboardLabel"
+text = "LAPS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer/MarginContainer/LeaderboardContainer/MarginContainer/Leaderboard"]
 layout_mode = 2
 

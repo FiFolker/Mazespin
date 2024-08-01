@@ -12,6 +12,8 @@ extends CanvasLayer
 
 @onready var info_dialog : AcceptDialog = $InfoDialog
 
+@onready var menu = %Menu
+
 # options selected
 var mode : Race.MODE = Race.MODE.CHRONO
 var track : TrackData = null
@@ -21,7 +23,7 @@ var car : CarData
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	info_dialog.hide()
-	ai_number_choice.editable = false
+	hide_ai_options()
 	if OptionsValues.input == OptionsValues.INPUT.CONTROLLER:
 		%Chrono.grab_focus()
 
@@ -89,11 +91,11 @@ func _on_difficulty_item_selected(index) -> void:
 
 func _on_chrono_button_down() -> void:
 	mode = Race.MODE.CHRONO
-	ai_number_choice.editable = false
+	hide_ai_options()
 
 func _on_ai_button_down() -> void:
 	mode = Race.MODE.AI
-	ai_number_choice.editable = true
+	show_ai_options()
 
 func track_selected(selected_track:TrackData) -> void:
 	if Data.track_list.find(selected_track) != -1:
@@ -116,3 +118,13 @@ func _on_race_button_down() -> void:
 	Race.singleplayer(track, mode, car, int(laps_number_choice.value), int(ai_number_choice.value))
 
 #endregion
+
+func hide_ai_options() -> void:
+	ai_number_choice.hide()
+	laps_number_choice.hide()
+	menu.focus_neighbor_right = difficulty_choice.get_path()
+
+func show_ai_options() -> void:
+	ai_number_choice.show()
+	laps_number_choice.show()
+	menu.focus_neighbor_right = ai_number_choice.get_path()

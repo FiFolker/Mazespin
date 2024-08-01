@@ -51,6 +51,8 @@ var _space_diff : float :
 	set(value):
 		pass
 	get:
+		if Race.leaderboard[0].car == null:
+			return 0
 		return (Race.leaderboard[0].car.progress_ratio + Race.leaderboard[0].current_lap) - (car.progress_ratio + current_lap)
 
 var time_diff : float :
@@ -74,6 +76,7 @@ func reset() -> void:
 	best_lap = 0
 	current_lap = 0
 	general_chrono = 0
+	lap_chrono = 0
 
 func setup(driver_data:DriverData):
 	self._driver_data = driver_data

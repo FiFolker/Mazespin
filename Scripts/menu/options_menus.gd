@@ -36,8 +36,8 @@ func init_translation() -> void:
 			language.select(index)
 			
 
-func _on_menu_btn_button_down():
-	SceneManager.goto_scene_menu("menu")
+func _on_back_btn_button_down():
+	SceneManager.goto_scene_file(SceneManager.previous_scene)
 
 
 func _on_input_choice_item_selected(index):
