@@ -1,4 +1,5 @@
 extends PanelContainer
+class_name DriverTemplate
 
 @export var highlight_color : Color
 

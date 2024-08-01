@@ -114,7 +114,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
-focus_neighbor_right = NodePath("../HBoxContainer3/Difficulty")
+focus_neighbor_right = NodePath("../HBoxContainer/AI")
 icon = ExtResource("4_wbdbd")
 
 [node name="Space" type="Control" parent="MarginContainer/VBoxContainer/Confirmation"]
@@ -184,6 +184,7 @@ size_flags_horizontal = 3
 [node name="Race" type="Button" parent="MarginContainer/VBoxContainer/Confirmation"]
 layout_mode = 2
 size_flags_horizontal = 8
+focus_neighbor_left = NodePath("../HBoxContainer3/Difficulty")
 icon = ExtResource("5_e6g6p")
 icon_alignment = 2
 

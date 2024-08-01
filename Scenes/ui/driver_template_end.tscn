@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=3 uid="uid://wvs1ldfsk3iw"]
+
+[ext_resource type="Script" path="res://Scripts/UI/driver_template_end.gd" id="1_k21uh"]
+
+[node name="PanelContainer" type="PanelContainer"]
+offset_right = 213.0
+offset_bottom = 20.0
+script = ExtResource("1_k21uh")
+highlight_color = Color(0.678431, 0.580392, 1, 0.478431)
+
+[node name="Background" type="ColorRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.676946, 0.580092, 0.998468, 0.478431)
+
+[node name="DriverTemplateEnd" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Pos" type="Label" parent="DriverTemplateEnd"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_type_variation = &"LeaderboardLabel"
+text = "RANKING"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Name" type="Label" parent="DriverTemplateEnd"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_type_variation = &"LeaderboardLabel"
+text = "NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Car" type="TextureRect" parent="DriverTemplateEnd"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Gap" type="Label" parent="DriverTemplateEnd"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_type_variation = &"LeaderboardLabel"
+text = "GAP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BestLap" type="Label" parent="DriverTemplateEnd"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_type_variation = &"LeaderboardLabel"
+text = "BEST_LAP"
+horizontal_alignment = 1
+vertical_alignment = 1

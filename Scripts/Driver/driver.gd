@@ -25,6 +25,11 @@ var lap_chrono : float :
 		_driver_data.lap_chrono = value
 	get:
 		return _driver_data.lap_chrono
+var last_lap_chrono : float : 
+	set(value):
+		_driver_data.last_lap_chrono = value
+	get:
+		return _driver_data.last_lap_chrono
 var best_lap : float : 
 	set(value):
 		_driver_data.best_lap = value
@@ -70,6 +75,12 @@ func _ready():
 		push_error(self, " driver not initialized")
 	car = get_parent() #get path follow 2d which is the car
 
+func reset() -> void:
+	best_lap = 0
+	current_lap = 0
+	general_chrono = 0
+	last_lap_chrono = 0
+
 func setup(driver_data:DriverData):
 	self._driver_data = driver_data
 
@@ -94,10 +105,12 @@ func _process(delta:float):
 				driver_ahead.ranking += 1
 				Race.ranking_update.emit()
 
+
 func lap_completed() -> void:
 	if lap_chrono < self.best_lap or self.best_lap == 0:
 		self.best_lap = lap_chrono
 		new_best_lap.emit()
 	current_lap += 1
+	last_lap_chrono = lap_chrono
 	lap_chrono = 0
 	car.progress_ratio = 0

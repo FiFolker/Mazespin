@@ -20,7 +20,7 @@ var max_laps_str : String
 func _ready():
 	#countdown
 	countdown_place.visible = true
-	countdown = Race.countdown
+	countdown = int(Race.countdown)
 	
 	Race.lap_finished.connect(on_lap_finished)
 	
@@ -35,8 +35,8 @@ func _ready():
 
 func init_drivers() -> void:
 	for driver in Race.leaderboard:
-		var new_driver = driver_template.instantiate()
-		new_driver.name = driver.driver_name
+		var new_driver = driver_template.instantiate() as DriverTemplate
+		new_driver.name = driver.driver_name + str(driver.ranking)
 		driver_place.add_child(new_driver)
 		new_driver.load_data(driver)
 

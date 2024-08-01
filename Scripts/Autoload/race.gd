@@ -48,27 +48,38 @@ func _on_scene_changing_ended():
 			start_countdown(countdown)
 
 func singleplayer(_track:TrackData, _mode:MODE, _car:CarData, _laps_number:int, _ai_number:int) -> void:
-	leaderboard.clear()
-	leaderboard.append(CurrentDriver.driver)
+	single_setup()
 	CurrentDriver.driver.car_data = _car
-	CurrentDriver.driver.ranking = leaderboard.size()
 	init(_track, _mode, _laps_number, _ai_number)
 
 func init(_track:TrackData, _mode:MODE, _laps_number:int, _ai_number:int):
 	track = _track
 	mode = _mode
-	general_lap = 0
 	max_laps = -1 if mode == MODE.CHRONO else _laps_number
 	number_driver = 0 if mode == MODE.CHRONO else _ai_number
+	setup()
+
+func single_setup() -> void:
+	leaderboard.clear()
+	leaderboard.append(CurrentDriver.driver)
+	CurrentDriver.driver.ranking = leaderboard.size()
+	CurrentDriver.driver.reset()
+
+func setup() -> void:
+	general_lap = 0
 	state = State.WAITING
 	wait_last_drivers = false
 	init_drivers()
 	SceneManager.goto_scene_packed(track.scene)
-	
+
+func replay_single() -> void:
+	single_setup()
+	setup()
+
 func init_drivers() -> void:
 	for i in number_driver:
 		var random_car = Data.car_list.pick_random()
-		var driver_data : DriverData = DriverData.new(Data.random_name.pick_random() + str(i), random_car, leaderboard.size()+1)
+		var driver_data : DriverData = DriverData.new(Data.random_name.pick_random(), random_car, leaderboard.size()+1)
 		var driver : DriverAI = DriverAI.new()
 		driver.setup(driver_data)
 		leaderboard.append(driver)
@@ -106,9 +117,26 @@ func _on_lap_finished() -> void:
 		wait_last_drivers = true
 		
 func end_race() -> void:
+	wait_last_drivers = false
 	state = Race.State.FINISHED
-	await get_tree().create_timer(5).timeout
+	await get_tree().create_timer(2).timeout
+	save_drivers()
 	SceneManager.goto_scene_menu("end")
+
+func save_drivers() -> void:
+	var driver_data : DriverData 
+	for i in leaderboard.size():
+		if leaderboard[i] != null:
+			driver_data = DriverData.new_driver_data(leaderboard[i]._driver_data)
+			leaderboard[i] = Driver.new()
+			leaderboard[i].setup(driver_data)
+		else:
+			push_error("Driver at pos ", i, " is null !")
+			return
+	driver_data = DriverData.new_driver_data(CurrentDriver.driver._driver_data)
+	CurrentDriver.driver = DriverPlayer.new()
+	CurrentDriver.driver.setup(driver_data)
+	leaderboard[CurrentDriver.driver.ranking-1] = CurrentDriver.driver
 
 func can_i_race(driver:Driver) -> bool:
 	if max_laps == -1:
