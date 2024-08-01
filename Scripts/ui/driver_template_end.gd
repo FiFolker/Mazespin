@@ -19,7 +19,7 @@ func load_data(driver:Driver) -> void:
 	d_name.text = driver.driver_name
 	var gap_str : String = "Leader"
 	if driver != Race.leaderboard[0]:
-		gap_str = "+" + Race.chrono_to_string(driver.last_lap_chrono - Race.leaderboard[0].last_lap_chrono)
+		gap_str = "+" + Race.chrono_to_string(driver.general_chrono - Race.leaderboard[0].general_chrono)
 	gap.text = gap_str
 	best_lap.text = Race.chrono_to_string(driver.best_lap)
 	if driver == CurrentDriver.driver:
