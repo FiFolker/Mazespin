@@ -39,4 +39,3 @@ func _process(delta:float):
 func _on_update_rank()-> void:
 	ranking_label.text = str(driver.ranking)
 	
-

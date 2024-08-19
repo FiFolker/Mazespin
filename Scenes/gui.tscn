@@ -73,9 +73,9 @@ anchor_bottom = 1.0
 offset_right = 200.0
 grow_vertical = 2
 theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 150
+theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 150
+theme_override_constants/margin_bottom = 50
 
 [node name="LeaderboardBg" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -101,14 +101,14 @@ expand_mode = 3
 
 [node name="LeaderboardTitle" type="Label" parent="MarginContainer/LeaderboardBg/MarginContainer/Leaderboard/Top"]
 layout_mode = 2
-theme_type_variation = &"BigLabel"
+theme_type_variation = &"HeaderSmall"
 text = "Race"
 horizontal_alignment = 1
 
 [node name="LapsLabel" type="Label" parent="MarginContainer/LeaderboardBg/MarginContainer/Leaderboard"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_type_variation = &"BigLabel"
+theme_type_variation = &"HeaderSmall"
 text = "Lap 0/1"
 horizontal_alignment = 1
 

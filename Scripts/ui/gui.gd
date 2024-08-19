@@ -63,4 +63,3 @@ func on_lap_finished() -> void:
 func _on_new_best_lap() -> void:
 	best_chrono.visible = true
 	best_chrono.text = "Best : "+ Race.chrono_to_string(CurrentDriver.driver.best_lap, chrono_precision)
-
